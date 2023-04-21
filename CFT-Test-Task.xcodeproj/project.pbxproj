@@ -9,11 +9,18 @@
 /* Begin PBXBuildFile section */
 		9661851429F12AAC0003C57A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661851329F12AAC0003C57A /* AppDelegate.swift */; };
 		9661851629F12AAC0003C57A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661851529F12AAC0003C57A /* SceneDelegate.swift */; };
-		9661851829F12AAC0003C57A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661851729F12AAC0003C57A /* ViewController.swift */; };
-		9661851B29F12AAC0003C57A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9661851929F12AAC0003C57A /* Main.storyboard */; };
+		9661851829F12AAC0003C57A /* NameRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661851729F12AAC0003C57A /* NameRegistrationViewController.swift */; };
 		9661851D29F12AAD0003C57A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9661851C29F12AAD0003C57A /* Assets.xcassets */; };
 		9661852029F12AAD0003C57A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9661851E29F12AAD0003C57A /* LaunchScreen.storyboard */; };
 		9661852B29F12AAD0003C57A /* CFT_Test_TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661852A29F12AAD0003C57A /* CFT_Test_TaskTests.swift */; };
+		9661854A29F138350003C57A /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661854929F138350003C57A /* UIColor+Extensions.swift */; };
+		9661854E29F13E3F0003C57A /* ShiftCustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661854D29F13E3F0003C57A /* ShiftCustomTextField.swift */; };
+		9661855129F14EA20003C57A /* ShiftBirthdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661855029F14EA20003C57A /* ShiftBirthdateView.swift */; };
+		9661855529F25C2C0003C57A /* ShiftCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661855429F25C2C0003C57A /* ShiftCustomButton.swift */; };
+		9661855729F26EAF0003C57A /* DateRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661855629F26EAF0003C57A /* DateRegistrationViewController.swift */; };
+		9661855929F26EC00003C57A /* PasswordRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661855829F26EC00003C57A /* PasswordRegistrationViewController.swift */; };
+		9661855B29F26F520003C57A /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661855A29F26F520003C57A /* RegistrationService.swift */; };
+		9661855D29F276F20003C57A /* ShiftCustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661855C29F276F20003C57A /* ShiftCustomStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,14 +44,21 @@
 		9661851029F12AAC0003C57A /* CFT-Test-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CFT-Test-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9661851329F12AAC0003C57A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9661851529F12AAC0003C57A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9661851729F12AAC0003C57A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9661851A29F12AAC0003C57A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9661851729F12AAC0003C57A /* NameRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameRegistrationViewController.swift; sourceTree = "<group>"; };
 		9661851C29F12AAD0003C57A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9661851F29F12AAD0003C57A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9661852129F12AAD0003C57A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9661852629F12AAD0003C57A /* CFT-Test-TaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CFT-Test-TaskTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9661852A29F12AAD0003C57A /* CFT_Test_TaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFT_Test_TaskTests.swift; sourceTree = "<group>"; };
 		9661853029F12AAD0003C57A /* CFT-Test-TaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CFT-Test-TaskUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9661854929F138350003C57A /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		9661854D29F13E3F0003C57A /* ShiftCustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCustomTextField.swift; sourceTree = "<group>"; };
+		9661855029F14EA20003C57A /* ShiftBirthdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftBirthdateView.swift; sourceTree = "<group>"; };
+		9661855429F25C2C0003C57A /* ShiftCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCustomButton.swift; sourceTree = "<group>"; };
+		9661855629F26EAF0003C57A /* DateRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRegistrationViewController.swift; sourceTree = "<group>"; };
+		9661855829F26EC00003C57A /* PasswordRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRegistrationViewController.swift; sourceTree = "<group>"; };
+		9661855A29F26F520003C57A /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
+		9661855C29F276F20003C57A /* ShiftCustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCustomStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +108,12 @@
 		9661851229F12AAC0003C57A /* CFT-Test-Task */ = {
 			isa = PBXGroup;
 			children = (
+				9661854829F138250003C57A /* Helpers */,
+				9661854629F1312F0003C57A /* Services */,
+				9661854529F1312B0003C57A /* Model */,
+				9661854329F131230003C57A /* Presentation */,
 				9661851329F12AAC0003C57A /* AppDelegate.swift */,
 				9661851529F12AAC0003C57A /* SceneDelegate.swift */,
-				9661851729F12AAC0003C57A /* ViewController.swift */,
-				9661851929F12AAC0003C57A /* Main.storyboard */,
 				9661851C29F12AAD0003C57A /* Assets.xcassets */,
 				9661851E29F12AAD0003C57A /* LaunchScreen.storyboard */,
 				9661852129F12AAD0003C57A /* Info.plist */,
@@ -111,6 +127,59 @@
 				9661852A29F12AAD0003C57A /* CFT_Test_TaskTests.swift */,
 			);
 			path = "CFT-Test-TaskTests";
+			sourceTree = "<group>";
+		};
+		9661854329F131230003C57A /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				9661854B29F138920003C57A /* CustomViews */,
+				9661854729F1339F0003C57A /* Registration */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		9661854529F1312B0003C57A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9661854629F1312F0003C57A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9661855A29F26F520003C57A /* RegistrationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9661854729F1339F0003C57A /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				9661851729F12AAC0003C57A /* NameRegistrationViewController.swift */,
+				9661855629F26EAF0003C57A /* DateRegistrationViewController.swift */,
+				9661855829F26EC00003C57A /* PasswordRegistrationViewController.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		9661854829F138250003C57A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9661854929F138350003C57A /* UIColor+Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9661854B29F138920003C57A /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				9661854D29F13E3F0003C57A /* ShiftCustomTextField.swift */,
+				9661855029F14EA20003C57A /* ShiftBirthdateView.swift */,
+				9661855429F25C2C0003C57A /* ShiftCustomButton.swift */,
+				9661855C29F276F20003C57A /* ShiftCustomStackView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,7 +288,6 @@
 			files = (
 				9661852029F12AAD0003C57A /* LaunchScreen.storyboard in Resources */,
 				9661851D29F12AAD0003C57A /* Assets.xcassets in Resources */,
-				9661851B29F12AAC0003C57A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,9 +312,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9661851829F12AAC0003C57A /* ViewController.swift in Sources */,
+				9661855529F25C2C0003C57A /* ShiftCustomButton.swift in Sources */,
+				9661851829F12AAC0003C57A /* NameRegistrationViewController.swift in Sources */,
+				9661854E29F13E3F0003C57A /* ShiftCustomTextField.swift in Sources */,
 				9661851429F12AAC0003C57A /* AppDelegate.swift in Sources */,
+				9661855129F14EA20003C57A /* ShiftBirthdateView.swift in Sources */,
 				9661851629F12AAC0003C57A /* SceneDelegate.swift in Sources */,
+				9661855B29F26F520003C57A /* RegistrationService.swift in Sources */,
+				9661854A29F138350003C57A /* UIColor+Extensions.swift in Sources */,
+				9661855D29F276F20003C57A /* ShiftCustomStackView.swift in Sources */,
+				9661855729F26EAF0003C57A /* DateRegistrationViewController.swift in Sources */,
+				9661855929F26EC00003C57A /* PasswordRegistrationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,14 +357,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9661851929F12AAC0003C57A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9661851A29F12AAC0003C57A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9661851E29F12AAD0003C57A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -350,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -404,7 +472,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -424,11 +492,12 @@
 				DEVELOPMENT_TEAM = G5T3Z588PS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CFT-Test-Task/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "CFT-Test-Task";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -436,9 +505,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.cft.CFT-Test-Task";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -452,11 +524,12 @@
 				DEVELOPMENT_TEAM = G5T3Z588PS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CFT-Test-Task/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "CFT-Test-Task";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -464,9 +537,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.cft.CFT-Test-Task";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
