@@ -7,10 +7,8 @@
 
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -18,10 +16,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        let registrationViewController = NameRegistrationViewController()
+        let nameRegistrationViewController = NameRegistrationViewController()
+        let nameRegistrationPresenter = NameRegistrationPresenter()
+        
+        nameRegistrationPresenter.view = nameRegistrationViewController
+        nameRegistrationViewController.presenter = nameRegistrationPresenter
+        
         let navigationController = UINavigationController(
-            rootViewController: registrationViewController)
+            rootViewController: nameRegistrationViewController)
+        
         navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.tintColor = .shiftRed
+        
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
