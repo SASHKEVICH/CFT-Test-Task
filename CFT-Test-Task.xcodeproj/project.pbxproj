@@ -21,6 +21,9 @@
 		9661855929F26EC00003C57A /* PasswordRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661855829F26EC00003C57A /* PasswordRegistrationViewController.swift */; };
 		9661855B29F26F520003C57A /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661855A29F26F520003C57A /* RegistrationService.swift */; };
 		9661855D29F276F20003C57A /* ShiftCustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661855C29F276F20003C57A /* ShiftCustomStackView.swift */; };
+		9661856329F27BB40003C57A /* NameRegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661856229F27BB40003C57A /* NameRegistrationPresenter.swift */; };
+		9661856729F285500003C57A /* ShiftCustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661856629F285500003C57A /* ShiftCustomLabel.swift */; };
+		9661856A29F291970003C57A /* RegistrationTextFieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661856929F291970003C57A /* RegistrationTextFieldHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		9661855829F26EC00003C57A /* PasswordRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRegistrationViewController.swift; sourceTree = "<group>"; };
 		9661855A29F26F520003C57A /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
 		9661855C29F276F20003C57A /* ShiftCustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCustomStackView.swift; sourceTree = "<group>"; };
+		9661856229F27BB40003C57A /* NameRegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameRegistrationPresenter.swift; sourceTree = "<group>"; };
+		9661856629F285500003C57A /* ShiftCustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCustomLabel.swift; sourceTree = "<group>"; };
+		9661856929F291970003C57A /* RegistrationTextFieldHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTextFieldHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,9 +162,10 @@
 		9661854729F1339F0003C57A /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				9661851729F12AAC0003C57A /* NameRegistrationViewController.swift */,
-				9661855629F26EAF0003C57A /* DateRegistrationViewController.swift */,
-				9661855829F26EC00003C57A /* PasswordRegistrationViewController.swift */,
+				9661856829F291890003C57A /* TextFieldHelper */,
+				9661856029F27B0F0003C57A /* PasswordRegistrationViewController */,
+				9661855F29F27B060003C57A /* DateRegistrationViewController */,
+				9661855E29F27AFD0003C57A /* NameRegistrationViewController */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -174,12 +181,54 @@
 		9661854B29F138920003C57A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				9661856429F285310003C57A /* Registration */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		9661855E29F27AFD0003C57A /* NameRegistrationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9661851729F12AAC0003C57A /* NameRegistrationViewController.swift */,
+				9661856229F27BB40003C57A /* NameRegistrationPresenter.swift */,
+			);
+			path = NameRegistrationViewController;
+			sourceTree = "<group>";
+		};
+		9661855F29F27B060003C57A /* DateRegistrationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9661855629F26EAF0003C57A /* DateRegistrationViewController.swift */,
+			);
+			path = DateRegistrationViewController;
+			sourceTree = "<group>";
+		};
+		9661856029F27B0F0003C57A /* PasswordRegistrationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9661855829F26EC00003C57A /* PasswordRegistrationViewController.swift */,
+			);
+			path = PasswordRegistrationViewController;
+			sourceTree = "<group>";
+		};
+		9661856429F285310003C57A /* Registration */ = {
+			isa = PBXGroup;
+			children = (
 				9661854D29F13E3F0003C57A /* ShiftCustomTextField.swift */,
 				9661855029F14EA20003C57A /* ShiftBirthdateView.swift */,
 				9661855429F25C2C0003C57A /* ShiftCustomButton.swift */,
 				9661855C29F276F20003C57A /* ShiftCustomStackView.swift */,
+				9661856629F285500003C57A /* ShiftCustomLabel.swift */,
 			);
-			path = CustomViews;
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		9661856829F291890003C57A /* TextFieldHelper */ = {
+			isa = PBXGroup;
+			children = (
+				9661856929F291970003C57A /* RegistrationTextFieldHelper.swift */,
+			);
+			path = TextFieldHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,11 +367,14 @@
 				9661851429F12AAC0003C57A /* AppDelegate.swift in Sources */,
 				9661855129F14EA20003C57A /* ShiftBirthdateView.swift in Sources */,
 				9661851629F12AAC0003C57A /* SceneDelegate.swift in Sources */,
+				9661856A29F291970003C57A /* RegistrationTextFieldHelper.swift in Sources */,
 				9661855B29F26F520003C57A /* RegistrationService.swift in Sources */,
 				9661854A29F138350003C57A /* UIColor+Extensions.swift in Sources */,
 				9661855D29F276F20003C57A /* ShiftCustomStackView.swift in Sources */,
 				9661855729F26EAF0003C57A /* DateRegistrationViewController.swift in Sources */,
+				9661856329F27BB40003C57A /* NameRegistrationPresenter.swift in Sources */,
 				9661855929F26EC00003C57A /* PasswordRegistrationViewController.swift in Sources */,
+				9661856729F285500003C57A /* ShiftCustomLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

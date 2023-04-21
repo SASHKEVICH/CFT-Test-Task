@@ -7,23 +7,41 @@
 
 import UIKit
 
-final class NameRegistrationViewController: UIViewController {
+protocol NameRegistrationViewControllerProtocol: AnyObject {
+    var presenter: NameRegistrationPresenterProtocol? { get set }
+    func showNameErrorLabel() -> Bool
+    func hideNameErrorLabel() -> Bool
+    func showSurnameErrorLabel() -> Bool
+    func hideSurnameErrorLabel() -> Bool
+    func enableContinueRegistrationButton()
+    func disableContinueRegistrationButton()
+}
+
+final class NameRegistrationViewController: UIViewController, NameRegistrationViewControllerProtocol {
     private let nameTextField = ShiftCustomTextField()
     private let surnameTextField = ShiftCustomTextField()
     
-    private let confirmRegistrationButton = ShiftCustomButton()
+    private let nameErrorLabel = ShiftCustomLabel()
+    private let surnameErrorLabel = ShiftCustomLabel()
+    
+    private let continueRegistrationButton = ShiftCustomButton()
     
     private let viewsHeight: CGFloat = 60
+    
+    private var surnameTextFieldTopConstraint: NSLayoutConstraint?
+    
+    var presenter: NameRegistrationPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         navigationItem.title = "Регистрация"
-        navigationController?.navigationBar.tintColor = .shiftRed
+        
         setupRedTopView()
-        setupConfirmRegistrationButton()
+        setupContinueRegistrationButton()
         setupTextFields()
+        setupErrorLabels()
     }
 }
 
@@ -45,12 +63,17 @@ private extension NameRegistrationViewController {
     
     func setupTextFields() {
         view.addSubview(nameTextField)
-        nameTextField.placeholder = "Ваше имя*"
+        nameTextField.placeholder = "Ваше имя"
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(surnameTextField)
-        surnameTextField.placeholder = "Ваша фамилия*"
+        surnameTextField.placeholder = "Ваша фамилия"
         surnameTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        nameTextField.delegate = presenter?.textFieldHelper
+        surnameTextField.delegate = presenter?.textFieldHelper
+        nameTextField.clearButtonMode = .whileEditing
+        surnameTextField.clearButtonMode = .whileEditing
         
         [nameTextField, surnameTextField].forEach {
             NSLayoutConstraint.activate([
@@ -60,34 +83,138 @@ private extension NameRegistrationViewController {
             ])
         }
         
+        let surnameTextFieldTopConstraint = NSLayoutConstraint(
+            item: surnameTextField,
+            attribute: .top,
+            relatedBy: .equal,
+            toItem: nameTextField,
+            attribute: .bottom,
+            multiplier: 1,
+            constant: 40)
+        self.surnameTextFieldTopConstraint = surnameTextFieldTopConstraint
+        
         NSLayoutConstraint.activate([
             nameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
-            surnameTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 30),
+            surnameTextFieldTopConstraint
         ])
+        
+        nameTextField.addTarget(self, action: #selector(didChangeTextField(_:)), for: .editingChanged)
+        surnameTextField.addTarget(self, action: #selector(didChangeTextField(_:)), for: .editingChanged)
     }
     
-    func setupConfirmRegistrationButton() {
-        view.addSubview(confirmRegistrationButton)
-        confirmRegistrationButton.translatesAutoresizingMaskIntoConstraints = false
+    func setupErrorLabels() {
+        view.addSubview(nameErrorLabel)
+        nameErrorLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(surnameErrorLabel)
+        surnameErrorLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            confirmRegistrationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            confirmRegistrationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            confirmRegistrationButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
-            confirmRegistrationButton.heightAnchor.constraint(equalToConstant: viewsHeight)
+            nameErrorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            nameErrorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            nameErrorLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10),
+            
+            surnameErrorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            surnameErrorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            surnameErrorLabel.topAnchor.constraint(equalTo: surnameTextField.bottomAnchor, constant: 10)
         ])
         
-        confirmRegistrationButton.title = "Продолжить"
-        confirmRegistrationButton.buttonState = .normal
-        confirmRegistrationButton.addTarget(self, action: #selector(didTapConfirmRegistrationButton), for: .touchUpInside)
+        nameErrorLabel.text = "Имя должно содержать больше одного символа"
+        nameErrorLabel.numberOfLines = 0
+        nameErrorLabel.isHidden = true
+        
+        surnameErrorLabel.text = "Фамилия должна содержать больше двух символов"
+        surnameErrorLabel.numberOfLines = 0
+        surnameErrorLabel.isHidden = true
+    }
+    
+    func setupContinueRegistrationButton() {
+        view.addSubview(continueRegistrationButton)
+        continueRegistrationButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            continueRegistrationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            continueRegistrationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            continueRegistrationButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+            continueRegistrationButton.heightAnchor.constraint(equalToConstant: viewsHeight)
+        ])
+        
+        continueRegistrationButton.title = "Продолжить"
+        continueRegistrationButton.buttonState = .disabled
+        continueRegistrationButton.addTarget(self, action: #selector(didTapConfirmRegistrationButton), for: .touchUpInside)
     }
 }
 
+// MARK: - Continue button callback
 private extension NameRegistrationViewController {
     @objc
     func didTapConfirmRegistrationButton() {
-        print("tap")
         let dateVc = DateRegistrationViewController()
         navigationController?.pushViewController(dateVc, animated: true)
+    }
+}
+
+// MARK: - Text fields callbacks
+private extension NameRegistrationViewController {
+    @objc
+    func didChangeTextField(_ textField: UITextField) {
+        guard let textField = textField as? ShiftCustomTextField else { return }
+        switch textField {
+        case nameTextField:
+            presenter?.didChangeNameTextField(text: textField.text)
+        case surnameTextField:
+            presenter?.didChangeSurnameTextField(text: textField.text)
+        default:
+            return
+        }
+    }
+}
+
+// MARK: - Enabling and disabling button
+extension NameRegistrationViewController {
+    func enableContinueRegistrationButton() {
+        guard continueRegistrationButton.buttonState != .normal else { return }
+        continueRegistrationButton.buttonState = .normal
+    }
+    
+    func disableContinueRegistrationButton() {
+        guard continueRegistrationButton.buttonState != .disabled else { return }
+        continueRegistrationButton.buttonState = .disabled
+    }
+}
+
+// MARK: Showing and hiding error labels
+extension NameRegistrationViewController {
+    func showNameErrorLabel() -> Bool {
+        surnameTextFieldTopConstraint?.constant = 70
+        toggleAppearence(errorLabel: nameErrorLabel, isHidden: false)
+        return nameErrorLabel.isHidden
+    }
+    
+    func hideNameErrorLabel() -> Bool {
+        surnameTextFieldTopConstraint?.constant = 40
+        toggleAppearence(errorLabel: nameErrorLabel, isHidden: true)
+        return nameErrorLabel.isHidden
+    }
+    
+    func showSurnameErrorLabel() -> Bool {
+        toggleAppearence(errorLabel: surnameErrorLabel, isHidden: false)
+        return surnameErrorLabel.isHidden
+    }
+    
+    func hideSurnameErrorLabel() -> Bool {
+        toggleAppearence(errorLabel: surnameErrorLabel, isHidden: true)
+        return surnameErrorLabel.isHidden
+    }
+    
+    private func toggleAppearence(errorLabel: ShiftCustomLabel, isHidden: Bool) {
+        guard errorLabel.isHidden != !errorLabel.isHidden else { return }
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self = self else { return }
+            if errorLabel == self.nameErrorLabel {
+                self.view.layoutIfNeeded()
+            }
+        }
+        errorLabel.isHidden = isHidden
     }
 }
