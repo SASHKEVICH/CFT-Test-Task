@@ -9,10 +9,10 @@ import UIKit
 
 protocol NameRegistrationViewControllerProtocol: AnyObject {
     var presenter: NameRegistrationPresenterProtocol? { get set }
-    func showNameErrorLabel() -> Bool
-    func hideNameErrorLabel() -> Bool
-    func showSurnameErrorLabel() -> Bool
-    func hideSurnameErrorLabel() -> Bool
+    func showNameErrorLabel()
+    func hideNameErrorLabel()
+    func showSurnameErrorLabel()
+    func hideSurnameErrorLabel()
     func enableContinueRegistrationButton()
     func disableContinueRegistrationButton()
 }
@@ -119,11 +119,11 @@ private extension NameRegistrationViewController {
             surnameErrorLabel.topAnchor.constraint(equalTo: surnameTextField.bottomAnchor, constant: 10)
         ])
         
-        nameErrorLabel.text = "Имя должно содержать больше одного символа"
+        nameErrorLabel.text = "Имя должно содержать больше одного символа."
         nameErrorLabel.numberOfLines = 0
         nameErrorLabel.isHidden = true
         
-        surnameErrorLabel.text = "Фамилия должна содержать больше двух символов"
+        surnameErrorLabel.text = "Фамилия должна содержать больше двух символов."
         surnameErrorLabel.numberOfLines = 0
         surnameErrorLabel.isHidden = true
     }
@@ -185,26 +185,22 @@ extension NameRegistrationViewController {
 
 // MARK: Showing and hiding error labels
 extension NameRegistrationViewController {
-    func showNameErrorLabel() -> Bool {
+    func showNameErrorLabel() {
         surnameTextFieldTopConstraint?.constant = 70
-        toggleAppearence(errorLabel: nameErrorLabel, isHidden: false)
-        return nameErrorLabel.isHidden
+        toggleAppearence(errorLabel: nameErrorLabel, shouldHidden: false)
     }
     
-    func hideNameErrorLabel() -> Bool {
+    func hideNameErrorLabel() {
         surnameTextFieldTopConstraint?.constant = 40
         toggleAppearence(errorLabel: nameErrorLabel, shouldHidden: true)
-        return nameErrorLabel.isHidden
     }
     
-    func showSurnameErrorLabel() -> Bool {
+    func showSurnameErrorLabel() {
         toggleAppearence(errorLabel: surnameErrorLabel, shouldHidden: false)
-        return surnameErrorLabel.isHidden
     }
     
-    func hideSurnameErrorLabel() -> Bool {
+    func hideSurnameErrorLabel() {
         toggleAppearence(errorLabel: surnameErrorLabel, shouldHidden: true)
-        return surnameErrorLabel.isHidden
     }
     
     private func toggleAppearence(errorLabel: ShiftCustomLabel, shouldHidden: Bool) {

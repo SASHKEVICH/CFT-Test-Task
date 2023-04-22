@@ -19,8 +19,12 @@ final class NameRegistrationPresenter: NameRegistrationPresenterProtocol {
     
     var textFieldHelper: RegistrationTextFieldHelperProtocol?
     
-    private var isNameErrorLabelHidden: Bool = true
-    private var isSurnameErrorLabelHidden: Bool = true
+    private var doesNameMatchCondition: Bool = false {
+        didSet { considerToEnablingContinueRegistrationButton() }
+    }
+    private var doesSurnameMatchCondition: Bool = false {
+        didSet { considerToEnablingContinueRegistrationButton() }
+    }
     
     init() {
         setupTextFieldHelper()
@@ -37,34 +41,36 @@ private extension NameRegistrationPresenter {
 extension NameRegistrationPresenter {
     func didChangeNameTextField(text: String?) {
         guard let view = view, let text = text, text.count != 0 else {
-            view?.disableContinueRegistrationButton()
+            self.doesNameMatchCondition = false
             return
         }
         
         if text.count <= 1 {
-            isNameErrorLabelHidden = view.showNameErrorLabel()
+            self.doesNameMatchCondition = false
+            view.showNameErrorLabel()
         } else {
-            isNameErrorLabelHidden = view.hideNameErrorLabel()
-            considerToDisablingContinueRegistrationButton()
+            self.doesNameMatchCondition = true
+            view.hideNameErrorLabel()
         }
     }
     
     func didChangeSurnameTextField(text: String?) {
         guard let view = view, let text = text, text.count != 0 else {
-            view?.disableContinueRegistrationButton()
+            self.doesSurnameMatchCondition = false
             return
         }
         
         if text.count <= 2 {
-            isSurnameErrorLabelHidden = view.showSurnameErrorLabel()
+            self.doesSurnameMatchCondition = false
+            view.showSurnameErrorLabel()
         } else {
-            isSurnameErrorLabelHidden = view.hideSurnameErrorLabel()
-            considerToDisablingContinueRegistrationButton()
+            self.doesSurnameMatchCondition = true
+            view.hideSurnameErrorLabel()
         }
     }
     
-    private func considerToDisablingContinueRegistrationButton() {
-        if isNameErrorLabelHidden && isSurnameErrorLabelHidden {
+    private func considerToEnablingContinueRegistrationButton() {
+        if doesNameMatchCondition && doesSurnameMatchCondition {
             view?.enableContinueRegistrationButton()
         } else {
             view?.disableContinueRegistrationButton()
