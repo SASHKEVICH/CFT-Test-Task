@@ -11,6 +11,8 @@ final class ShiftBirthdateView: UIView {
     private let textLabel = UILabel()
     private let datePicker = UIDatePicker()
     
+    weak var delegate: BirthdateViewDatePickerDelegateProtocol?
+    
     var text: String? {
         didSet {
             textLabel.text = text
@@ -64,5 +66,14 @@ private extension ShiftBirthdateView {
         datePicker.locale = Locale(identifier: "ru_RU")
         datePicker.datePickerMode = .date
         datePicker.tintColor = .shiftRed
+        
+        datePicker.addTarget(self, action: #selector(didChooseBirthdate(_:)), for: .valueChanged)
+    }
+}
+
+private extension ShiftBirthdateView {
+    @objc
+    func didChooseBirthdate(_ datePicker: UIDatePicker) {
+        delegate?.didChooseBirthdate(datePicker)
     }
 }

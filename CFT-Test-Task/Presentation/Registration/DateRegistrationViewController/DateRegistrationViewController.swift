@@ -7,13 +7,23 @@
 
 import UIKit
 
-final class DateRegistrationViewController: UIViewController {
+protocol DateRegistrationViewControllerProtocol: AnyObject {
+    var presenter: DateRegistrationPresenterProtocol? { get set }
+    func showBirthdateErrorLabel()
+    func hideBirthdateErrorLabel()
+    func enableContinueRegistrationButton()
+    func disableContinueRegistrationButton()
+}
+
+final class DateRegistrationViewController: UIViewController, DateRegistrationViewControllerProtocol {
     private let topStackView = ShiftCustomStackView()
-    
     private let birthdateView = ShiftBirthdateView()
-    private let confirmRegistrationButton = ShiftCustomButton()
+    private let continueRegistrationButton = ShiftCustomButton()
+    private let birthdateErrorLabel = ShiftCustomLabel()
     
     private let viewsHeight: CGFloat = 60
+    
+    var presenter: DateRegistrationPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +32,35 @@ final class DateRegistrationViewController: UIViewController {
         navigationItem.title = "Регистрация"
         setupTopStackView()
         setupBirthdateView()
-        setupConfirmRegistrationButton()
+        setupBirthdateErrorLabel()
+        setupContinueRegistrationButton()
     }
 }
 
+// MARK: - DateRegistrationViewControllerProtocol
+extension DateRegistrationViewController {
+    func showBirthdateErrorLabel() {
+        guard birthdateErrorLabel.isHidden != !birthdateErrorLabel.isHidden else { return }
+        birthdateErrorLabel.isHidden = false
+    }
+    
+    func hideBirthdateErrorLabel() {
+        guard birthdateErrorLabel.isHidden != !birthdateErrorLabel.isHidden else { return }
+        birthdateErrorLabel.isHidden = true
+    }
+    
+    func enableContinueRegistrationButton() {
+        guard continueRegistrationButton.buttonState != .normal else { return }
+        continueRegistrationButton.buttonState = .normal
+    }
+    
+    func disableContinueRegistrationButton() {
+        guard continueRegistrationButton.buttonState != .disabled else { return }
+        continueRegistrationButton.buttonState = .disabled
+    }
+}
+
+// MARK: - Setup top red stack view
 private extension DateRegistrationViewController {
     func setupTopStackView() {
         view.addSubview(topStackView)
@@ -41,6 +76,7 @@ private extension DateRegistrationViewController {
     }
 }
 
+// MARK: - Setup birthdate view
 private extension DateRegistrationViewController {
     func setupBirthdateView() {
         view.addSubview(birthdateView)
@@ -52,31 +88,51 @@ private extension DateRegistrationViewController {
             birthdateView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             birthdateView.heightAnchor.constraint(equalToConstant: viewsHeight)
         ])
+        
+        birthdateView.delegate = presenter?.datePickerDelegate
     }
 }
 
+// MARK: - Setup birthdate error label
 private extension DateRegistrationViewController {
-    func setupConfirmRegistrationButton() {
-        view.addSubview(confirmRegistrationButton)
-        confirmRegistrationButton.translatesAutoresizingMaskIntoConstraints = false
+    func setupBirthdateErrorLabel() {
+        view.addSubview(birthdateErrorLabel)
+        birthdateErrorLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            confirmRegistrationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            confirmRegistrationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            confirmRegistrationButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
-            confirmRegistrationButton.heightAnchor.constraint(equalToConstant: viewsHeight)
+            birthdateErrorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            birthdateErrorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            birthdateErrorLabel.topAnchor.constraint(equalTo: birthdateView.bottomAnchor, constant: 10)
         ])
         
-        confirmRegistrationButton.title = "Продолжить"
-        confirmRegistrationButton.buttonState = .normal
-        confirmRegistrationButton.addTarget(self, action: #selector(didTapConfirmRegistrationButton), for: .touchUpInside)
+        birthdateErrorLabel.text = "Дата рождения не может быть больше текущей даты."
+        birthdateErrorLabel.numberOfLines = 0
+        birthdateErrorLabel.isHidden = true
+    }
+}
+
+// MARK: - Setup continue registration button
+private extension DateRegistrationViewController {
+    func setupContinueRegistrationButton() {
+        view.addSubview(continueRegistrationButton)
+        continueRegistrationButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            continueRegistrationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            continueRegistrationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            continueRegistrationButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+            continueRegistrationButton.heightAnchor.constraint(equalToConstant: viewsHeight)
+        ])
+        
+        continueRegistrationButton.title = "Продолжить"
+        continueRegistrationButton.buttonState = .disabled
+        continueRegistrationButton.addTarget(self, action: #selector(didTapConfirmRegistrationButton), for: .touchUpInside)
     }
 }
 
 private extension DateRegistrationViewController {
     @objc
     func didTapConfirmRegistrationButton() {
-        print("tap")
         let passwordVC = PasswordRegistrationViewController()
         navigationController?.pushViewController(passwordVC, animated: true)
     }
