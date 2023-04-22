@@ -7,12 +7,26 @@
 
 import UIKit
 
+enum ShiftCustomTextFieldType {
+    case password
+    case normal
+}
+
 final class ShiftCustomTextField: UITextField {
     private let padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        
+    private let rightViewPadding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
+    
+    var type: ShiftCustomTextFieldType = .normal {
+        didSet {
+            setupNeededTextFieldType()
+        }
+    }
+    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
+        
         setupTextField()
+        setupNeededTextFieldType()
     }
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
@@ -26,15 +40,44 @@ final class ShiftCustomTextField: UITextField {
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         bounds.inset(by: padding)
     }
+    
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        CGRect(x: bounds.width - 46, y: bounds.height / 2 - 15, width: 30, height: 30)
+    }
 }
 
 private extension ShiftCustomTextField {
+    func setupNeededTextFieldType() {
+        guard type != .normal else { return }
+        setupSecureTextField()
+    }
+    
     func setupTextField() {
         textColor = .black
         backgroundColor = .white
         
         setupBorder()
         setupPlaceholder()
+    }
+    
+    func setupSecureTextField() {
+        isSecureTextEntry = true
+        
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        button.setImage(UIImage(systemName: "eye"), for: .normal)
+        button.setImage(UIImage(systemName: "eye.slash"), for: .selected)
+        button.tintColor = .shiftRed
+        
+        button.addTarget(self, action: #selector(showHidePassword(_:)), for: .touchUpInside)
+        
+        rightView = button
+        rightViewMode = .always
+    }
+    
+    @objc
+    func showHidePassword(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        self.isSecureTextEntry = !sender.isSelected
     }
     
     func setupBorder() {
