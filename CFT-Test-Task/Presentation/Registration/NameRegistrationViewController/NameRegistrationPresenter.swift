@@ -19,13 +19,8 @@ final class NameRegistrationPresenter: NameRegistrationPresenterProtocol {
     
     var textFieldHelper: RegistrationTextFieldHelperProtocol?
     
-    private var isNameErrorLabelHidden: Bool = true {
-        didSet { considerToDisablingContinueRegistrationButton() }
-    }
-    
-    private var isSurnameErrorLabelHidden: Bool = true {
-        didSet { considerToDisablingContinueRegistrationButton() }
-    }
+    private var isNameErrorLabelHidden: Bool = true
+    private var isSurnameErrorLabelHidden: Bool = true
     
     init() {
         setupTextFieldHelper()
@@ -41,22 +36,30 @@ private extension NameRegistrationPresenter {
 
 extension NameRegistrationPresenter {
     func didChangeNameTextField(text: String?) {
-        guard let view = view, let text = text, text.count != 0 else { return }
+        guard let view = view, let text = text, text.count != 0 else {
+            view?.disableContinueRegistrationButton()
+            return
+        }
         
         if text.count <= 1 {
             isNameErrorLabelHidden = view.showNameErrorLabel()
         } else {
             isNameErrorLabelHidden = view.hideNameErrorLabel()
+            considerToDisablingContinueRegistrationButton()
         }
     }
     
     func didChangeSurnameTextField(text: String?) {
-        guard let view = view, let text = text, text.count != 0 else { return }
+        guard let view = view, let text = text, text.count != 0 else {
+            view?.disableContinueRegistrationButton()
+            return
+        }
         
         if text.count <= 2 {
             isSurnameErrorLabelHidden = view.showSurnameErrorLabel()
         } else {
             isSurnameErrorLabelHidden = view.hideSurnameErrorLabel()
+            considerToDisablingContinueRegistrationButton()
         }
     }
     

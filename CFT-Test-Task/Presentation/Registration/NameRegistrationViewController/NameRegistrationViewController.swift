@@ -223,5 +223,7 @@ extension NameRegistrationViewController {
             completion: { [errorLabel] _ in
                 errorLabel.isHidden = shouldHidden
             })
+        
+        errorLabel.isHidden = shouldHidden
     }
 }
