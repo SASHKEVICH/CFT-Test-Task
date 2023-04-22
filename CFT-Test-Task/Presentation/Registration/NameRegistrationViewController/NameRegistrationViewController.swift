@@ -193,28 +193,35 @@ extension NameRegistrationViewController {
     
     func hideNameErrorLabel() -> Bool {
         surnameTextFieldTopConstraint?.constant = 40
-        toggleAppearence(errorLabel: nameErrorLabel, isHidden: true)
+        toggleAppearence(errorLabel: nameErrorLabel, shouldHidden: true)
         return nameErrorLabel.isHidden
     }
     
     func showSurnameErrorLabel() -> Bool {
-        toggleAppearence(errorLabel: surnameErrorLabel, isHidden: false)
+        toggleAppearence(errorLabel: surnameErrorLabel, shouldHidden: false)
         return surnameErrorLabel.isHidden
     }
     
     func hideSurnameErrorLabel() -> Bool {
-        toggleAppearence(errorLabel: surnameErrorLabel, isHidden: true)
+        toggleAppearence(errorLabel: surnameErrorLabel, shouldHidden: true)
         return surnameErrorLabel.isHidden
     }
     
-    private func toggleAppearence(errorLabel: ShiftCustomLabel, isHidden: Bool) {
+    private func toggleAppearence(errorLabel: ShiftCustomLabel, shouldHidden: Bool) {
         guard errorLabel.isHidden != !errorLabel.isHidden else { return }
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        UIView.animate(withDuration: 0.3) { [weak self, errorLabel] in
             guard let self = self else { return }
             if errorLabel == self.nameErrorLabel {
                 self.view.layoutIfNeeded()
             }
         }
-        errorLabel.isHidden = isHidden
+        
+        UIView.transition(with: errorLabel, duration: 0.3, options: [.curveEaseOut],
+            animations: { [errorLabel] in
+                errorLabel.alpha = shouldHidden ? 0 : 1
+            },
+            completion: { [errorLabel] _ in
+                errorLabel.isHidden = shouldHidden
+            })
     }
 }
