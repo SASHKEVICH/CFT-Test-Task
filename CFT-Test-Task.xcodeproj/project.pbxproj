@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9635D8FE29F41E9900C4652F /* DateRegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9635D8FD29F41E9900C4652F /* DateRegistrationPresenter.swift */; };
+		9635D90229F4227300C4652F /* BirthdateViewDatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9635D90129F4227300C4652F /* BirthdateViewDatePickerDelegate.swift */; };
 		9661851429F12AAC0003C57A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661851329F12AAC0003C57A /* AppDelegate.swift */; };
 		9661851629F12AAC0003C57A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661851529F12AAC0003C57A /* SceneDelegate.swift */; };
 		9661851829F12AAC0003C57A /* NameRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661851729F12AAC0003C57A /* NameRegistrationViewController.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9635D8FD29F41E9900C4652F /* DateRegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRegistrationPresenter.swift; sourceTree = "<group>"; };
+		9635D90129F4227300C4652F /* BirthdateViewDatePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdateViewDatePickerDelegate.swift; sourceTree = "<group>"; };
 		9661851029F12AAC0003C57A /* CFT-Test-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CFT-Test-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9661851329F12AAC0003C57A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9661851529F12AAC0003C57A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9635D90329F4229200C4652F /* BirthdateViewDatePickerDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				9635D90129F4227300C4652F /* BirthdateViewDatePickerDelegate.swift */,
+			);
+			path = BirthdateViewDatePickerDelegate;
+			sourceTree = "<group>";
+		};
 		9661850729F12AAC0003C57A = {
 			isa = PBXGroup;
 			children = (
@@ -198,7 +210,9 @@
 		9661855F29F27B060003C57A /* DateRegistrationViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9635D90329F4229200C4652F /* BirthdateViewDatePickerDelegate */,
 				9661855629F26EAF0003C57A /* DateRegistrationViewController.swift */,
+				9635D8FD29F41E9900C4652F /* DateRegistrationPresenter.swift */,
 			);
 			path = DateRegistrationViewController;
 			sourceTree = "<group>";
@@ -369,6 +383,8 @@
 				9661851629F12AAC0003C57A /* SceneDelegate.swift in Sources */,
 				9661856A29F291970003C57A /* RegistrationTextFieldHelper.swift in Sources */,
 				9661855B29F26F520003C57A /* RegistrationService.swift in Sources */,
+				9635D8FE29F41E9900C4652F /* DateRegistrationPresenter.swift in Sources */,
+				9635D90229F4227300C4652F /* BirthdateViewDatePickerDelegate.swift in Sources */,
 				9661854A29F138350003C57A /* UIColor+Extensions.swift in Sources */,
 				9661855D29F276F20003C57A /* ShiftCustomStackView.swift in Sources */,
 				9661855729F26EAF0003C57A /* DateRegistrationViewController.swift in Sources */,

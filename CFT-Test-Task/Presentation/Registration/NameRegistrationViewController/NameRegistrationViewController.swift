@@ -149,8 +149,15 @@ private extension NameRegistrationViewController {
 private extension NameRegistrationViewController {
     @objc
     func didTapConfirmRegistrationButton() {
-        let dateVc = DateRegistrationViewController()
-        navigationController?.pushViewController(dateVc, animated: true)
+        let datePickerDelegate = BirthdateViewDatePickerDelegate()
+        
+        let dateRegistrationVC = DateRegistrationViewController()
+        let dateRegistrationPresenter = DateRegistrationPresenter(datePickerDelegate: datePickerDelegate)
+        
+        dateRegistrationVC.presenter = dateRegistrationPresenter
+        dateRegistrationPresenter.view = dateRegistrationVC
+        
+        navigationController?.pushViewController(dateRegistrationVC, animated: true)
     }
 }
 
