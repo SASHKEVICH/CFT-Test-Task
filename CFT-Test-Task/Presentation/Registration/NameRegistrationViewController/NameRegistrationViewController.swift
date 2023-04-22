@@ -145,7 +145,6 @@ private extension NameRegistrationViewController {
         self.surnameTextFieldTopConstraint = surnameTextFieldTopConstraint
         
         NSLayoutConstraint.activate([
-            surnameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
             surnameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             surnameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             surnameTextField.heightAnchor.constraint(equalToConstant: self.viewsHeight),
@@ -234,11 +233,12 @@ private extension NameRegistrationViewController {
     @objc
     func didChangeTextField(_ textField: UITextField) {
         guard let textField = textField as? ShiftCustomTextField else { return }
+        let trimmedText = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         switch textField {
         case nameTextField:
-            presenter?.didChangeNameTextField(text: textField.text)
+            presenter?.didChangeNameTextField(text: trimmedText)
         case surnameTextField:
-            presenter?.didChangeSurnameTextField(text: textField.text)
+            presenter?.didChangeSurnameTextField(text: trimmedText)
         default:
             return
         }
