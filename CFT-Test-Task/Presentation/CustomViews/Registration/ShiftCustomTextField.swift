@@ -64,8 +64,8 @@ private extension ShiftCustomTextField {
         isSecureTextEntry = true
         
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        button.setImage(UIImage(systemName: "eye"), for: .normal)
-        button.setImage(UIImage(systemName: "eye.slash"), for: .selected)
+        button.setImage(UIImage(systemName: "eye"), for: .selected)
+        button.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         button.tintColor = .shiftRed
         
         button.addTarget(self, action: #selector(showHidePassword(_:)), for: .touchUpInside)
