@@ -10,6 +10,7 @@ import Foundation
 protocol RegistrationServiceProtocol {
     func register(name: String, surname: String)
     func register(birthdate: Date)
+    func confirmRegistration(with password: String)
 }
 
 final class RegistrationService: RegistrationServiceProtocol {
@@ -23,7 +24,6 @@ final class RegistrationService: RegistrationServiceProtocol {
             surname: surname,
             birthdate: user.birthdate)
         self.user = newUser
-        print(user)
     }
     
     func register(birthdate: Date) {
@@ -32,6 +32,9 @@ final class RegistrationService: RegistrationServiceProtocol {
             surname: user.surname,
             birthdate: birthdate)
         self.user = newUser
-        print(user)
+    }
+    
+    func confirmRegistration(with password: String) {
+        print(user, password)
     }
 }

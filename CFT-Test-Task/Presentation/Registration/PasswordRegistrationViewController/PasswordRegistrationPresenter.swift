@@ -12,11 +12,14 @@ protocol PasswordRegistrationPresenterProtocol {
     var textFieldHelper: RegistrationTextFieldHelper? { get }
     func didChangePasswordTextField(text: String?)
     func didChangePasswordConfirmationTextField(text: String?)
+    func didTapConfirmRegistrationButton()
 }
 
 final class PasswordRegistrationPresenter: PasswordRegistrationPresenterProtocol {
     weak var view: PasswordRegistrationViewControllerProtocol?
     var textFieldHelper: RegistrationTextFieldHelper?
+    
+    private let registrationService: RegistrationServiceProtocol
     
     private var doesPasswordMatchCondition: Bool = false {
         didSet { considerToEnablingContinueRegistrationButton() }
@@ -28,7 +31,11 @@ final class PasswordRegistrationPresenter: PasswordRegistrationPresenterProtocol
     
     private var password: String = ""
     
-    init(textFieldHelper: RegistrationTextFieldHelper) {
+    init(
+        textFieldHelper: RegistrationTextFieldHelper,
+        registrationService: RegistrationServiceProtocol
+    ) {
+        self.registrationService = registrationService
         self.textFieldHelper = textFieldHelper
     }
 }
@@ -67,11 +74,16 @@ extension PasswordRegistrationPresenter {
         
         if self.password == passwordConfirmation {
             self.doesPasswordConfirmationMatchCondition = true
+            self.password = passwordConfirmation
             view.hidePasswordConfirmationErrorLabel()
         } else {
             self.doesPasswordConfirmationMatchCondition = false
             view.showPasswordConfirmationErrorLabel()
         }
+    }
+    
+    func didTapConfirmRegistrationButton() {
+        registrationService.confirmRegistration(with: password)
     }
 }
 
