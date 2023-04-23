@@ -13,6 +13,7 @@ struct RegistrationStore {
     private let userKey = "userKey"
 }
 
+// MARK: - Working with user
 extension RegistrationStore {
     func store(user: User) {
         guard let data = try? JSONEncoder().encode(user) else {
@@ -33,6 +34,7 @@ extension RegistrationStore {
     }
 }
 
+// MARK: - Working with password
 extension RegistrationStore {
     func store(password: String, for user: User) {
         let userCredentials = user.name + user.surname

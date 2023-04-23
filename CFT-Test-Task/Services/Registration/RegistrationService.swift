@@ -11,6 +11,8 @@ protocol RegistrationServiceProtocol {
     func register(name: String, surname: String)
     func register(birthdate: Date)
     func confirmRegistration(with password: String)
+    var isThereAUserInStore: Bool { get }
+    var userCredentials: String? { get }
 }
 
 final class RegistrationService: RegistrationServiceProtocol {
@@ -18,7 +20,10 @@ final class RegistrationService: RegistrationServiceProtocol {
     private let registrationStore = RegistrationStore()
     
     static let shared: RegistrationServiceProtocol = RegistrationService()
-    
+}
+
+// MARK: - Registration
+extension RegistrationService {
     func register(name: String, surname: String) {
         let newUser = User(
             name: name,
@@ -27,7 +32,6 @@ final class RegistrationService: RegistrationServiceProtocol {
         self.user = newUser
         
         registrationStore.store(user: self.user)
-        print(registrationStore.getUser())
     }
     
     func register(birthdate: Date) {
@@ -38,11 +42,28 @@ final class RegistrationService: RegistrationServiceProtocol {
         self.user = newUser
         
         registrationStore.store(user: self.user)
-        print(registrationStore.getUser())
     }
     
     func confirmRegistration(with password: String) {
         print(user, password)
         registrationStore.store(password: password, for: user)
+    }
+}
+
+// MARK: - Getting user's info
+extension RegistrationService {
+    var userCredentials: String? {
+        guard let user = registrationStore.getUser() else { return nil }
+        let userCredentials = user.name + " " + user.surname
+        return userCredentials
+    }
+    
+    var isThereAUserInStore: Bool {
+        guard
+            let _ = registrationStore.getUser(),
+            let _ = registrationStore.getPassword(for: user)
+        else { return false }
+        
+        return true
     }
 }
