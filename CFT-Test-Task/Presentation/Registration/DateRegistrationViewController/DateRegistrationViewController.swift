@@ -133,7 +133,13 @@ private extension DateRegistrationViewController {
 private extension DateRegistrationViewController {
     @objc
     func didTapConfirmRegistrationButton() {
+        let textFieldHelper = RegistrationTextFieldHelper()
         let passwordVC = PasswordRegistrationViewController()
+        let passwordPresenter = PasswordRegistrationPresenter(textFieldHelper: textFieldHelper)
+        
+        passwordVC.presenter = passwordPresenter
+        passwordPresenter.view = passwordVC
+        
         navigationController?.pushViewController(passwordVC, animated: true)
     }
 }

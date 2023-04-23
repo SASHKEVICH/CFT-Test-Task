@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9635D8FE29F41E9900C4652F /* DateRegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9635D8FD29F41E9900C4652F /* DateRegistrationPresenter.swift */; };
 		9635D90229F4227300C4652F /* BirthdateViewDatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9635D90129F4227300C4652F /* BirthdateViewDatePickerDelegate.swift */; };
+		9635D90529F4435000C4652F /* PasswordRegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9635D90429F4435000C4652F /* PasswordRegistrationPresenter.swift */; };
 		9661851429F12AAC0003C57A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661851329F12AAC0003C57A /* AppDelegate.swift */; };
 		9661851629F12AAC0003C57A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661851529F12AAC0003C57A /* SceneDelegate.swift */; };
 		9661851829F12AAC0003C57A /* NameRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661851729F12AAC0003C57A /* NameRegistrationViewController.swift */; };
@@ -26,6 +27,7 @@
 		9661856329F27BB40003C57A /* NameRegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661856229F27BB40003C57A /* NameRegistrationPresenter.swift */; };
 		9661856729F285500003C57A /* ShiftCustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661856629F285500003C57A /* ShiftCustomLabel.swift */; };
 		9661856A29F291970003C57A /* RegistrationTextFieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661856929F291970003C57A /* RegistrationTextFieldHelper.swift */; };
+		96FD00CE29F44D940049BCCE /* NSRegularExpression+Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00CD29F44D940049BCCE /* NSRegularExpression+Matches.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,7 @@
 /* Begin PBXFileReference section */
 		9635D8FD29F41E9900C4652F /* DateRegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRegistrationPresenter.swift; sourceTree = "<group>"; };
 		9635D90129F4227300C4652F /* BirthdateViewDatePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdateViewDatePickerDelegate.swift; sourceTree = "<group>"; };
+		9635D90429F4435000C4652F /* PasswordRegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRegistrationPresenter.swift; sourceTree = "<group>"; };
 		9661851029F12AAC0003C57A /* CFT-Test-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CFT-Test-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9661851329F12AAC0003C57A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9661851529F12AAC0003C57A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +72,7 @@
 		9661856229F27BB40003C57A /* NameRegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameRegistrationPresenter.swift; sourceTree = "<group>"; };
 		9661856629F285500003C57A /* ShiftCustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCustomLabel.swift; sourceTree = "<group>"; };
 		9661856929F291970003C57A /* RegistrationTextFieldHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTextFieldHelper.swift; sourceTree = "<group>"; };
+		96FD00CD29F44D940049BCCE /* NSRegularExpression+Matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Matches.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				9661854929F138350003C57A /* UIColor+Extensions.swift */,
+				96FD00CD29F44D940049BCCE /* NSRegularExpression+Matches.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				9661855829F26EC00003C57A /* PasswordRegistrationViewController.swift */,
+				9635D90429F4435000C4652F /* PasswordRegistrationPresenter.swift */,
 			);
 			path = PasswordRegistrationViewController;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 				9661855129F14EA20003C57A /* ShiftBirthdateView.swift in Sources */,
 				9661851629F12AAC0003C57A /* SceneDelegate.swift in Sources */,
 				9661856A29F291970003C57A /* RegistrationTextFieldHelper.swift in Sources */,
+				96FD00CE29F44D940049BCCE /* NSRegularExpression+Matches.swift in Sources */,
 				9661855B29F26F520003C57A /* RegistrationService.swift in Sources */,
 				9635D8FE29F41E9900C4652F /* DateRegistrationPresenter.swift in Sources */,
 				9635D90229F4227300C4652F /* BirthdateViewDatePickerDelegate.swift in Sources */,
@@ -390,6 +397,7 @@
 				9661855729F26EAF0003C57A /* DateRegistrationViewController.swift in Sources */,
 				9661856329F27BB40003C57A /* NameRegistrationPresenter.swift in Sources */,
 				9661855929F26EC00003C57A /* PasswordRegistrationViewController.swift in Sources */,
+				9635D90529F4435000C4652F /* PasswordRegistrationPresenter.swift in Sources */,
 				9661856729F285500003C57A /* ShiftCustomLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,6 +22,7 @@ final class NameRegistrationPresenter: NameRegistrationPresenterProtocol {
     private var doesNameMatchCondition: Bool = false {
         didSet { considerToEnablingContinueRegistrationButton() }
     }
+    
     private var doesSurnameMatchCondition: Bool = false {
         didSet { considerToEnablingContinueRegistrationButton() }
     }
@@ -42,6 +43,7 @@ extension NameRegistrationPresenter {
     func didChangeNameTextField(text: String?) {
         guard let view = view, let text = text, text.count != 0 else {
             self.doesNameMatchCondition = false
+            self.view?.hideNameErrorLabel()
             return
         }
         
@@ -57,6 +59,7 @@ extension NameRegistrationPresenter {
     func didChangeSurnameTextField(text: String?) {
         guard let view = view, let text = text, text.count != 0 else {
             self.doesSurnameMatchCondition = false
+            self.view?.hideSurnameErrorLabel()
             return
         }
         
