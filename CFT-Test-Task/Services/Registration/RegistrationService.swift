@@ -60,7 +60,7 @@ extension RegistrationService {
     
     var isThereAUserInStore: Bool {
         guard
-            let _ = registrationStore.getUser(),
+            let user = registrationStore.getUser(),
             let _ = registrationStore.getPassword(for: user)
         else { return false }
         

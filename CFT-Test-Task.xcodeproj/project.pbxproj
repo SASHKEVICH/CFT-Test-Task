@@ -31,6 +31,8 @@
 		96FD00D129F4F4EE0049BCCE /* RegistrationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00D029F4F4EE0049BCCE /* RegistrationStore.swift */; };
 		96FD00D329F4FAF60049BCCE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00D229F4FAF60049BCCE /* User.swift */; };
 		96FD00D629F50BFE0049BCCE /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00D529F50BFE0049BCCE /* KeychainWrapper.swift */; };
+		96FD00DB29F5264D0049BCCE /* RegistrationCheckerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00DA29F5264D0049BCCE /* RegistrationCheckerViewController.swift */; };
+		96FD00DD29F528670049BCCE /* RegistrationCheckerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00DC29F528670049BCCE /* RegistrationCheckerPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		96FD00D029F4F4EE0049BCCE /* RegistrationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStore.swift; sourceTree = "<group>"; };
 		96FD00D229F4FAF60049BCCE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		96FD00D529F50BFE0049BCCE /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		96FD00DA29F5264D0049BCCE /* RegistrationCheckerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCheckerViewController.swift; sourceTree = "<group>"; };
+		96FD00DC29F528670049BCCE /* RegistrationCheckerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCheckerPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 		9661854329F131230003C57A /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				96FD00D729F526300049BCCE /* RegistrationChecker */,
 				9661854B29F138920003C57A /* CustomViews */,
 				9661854729F1339F0003C57A /* Registration */,
 			);
@@ -274,6 +279,15 @@
 				96FD00D529F50BFE0049BCCE /* KeychainWrapper.swift */,
 			);
 			path = KeyChainWrapper;
+			sourceTree = "<group>";
+		};
+		96FD00D729F526300049BCCE /* RegistrationChecker */ = {
+			isa = PBXGroup;
+			children = (
+				96FD00DA29F5264D0049BCCE /* RegistrationCheckerViewController.swift */,
+				96FD00DC29F528670049BCCE /* RegistrationCheckerPresenter.swift */,
+			);
+			path = RegistrationChecker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,8 +423,10 @@
 				9661855529F25C2C0003C57A /* ShiftCustomButton.swift in Sources */,
 				9661851829F12AAC0003C57A /* NameRegistrationViewController.swift in Sources */,
 				9661854E29F13E3F0003C57A /* ShiftCustomTextField.swift in Sources */,
+				96FD00DD29F528670049BCCE /* RegistrationCheckerPresenter.swift in Sources */,
 				9661851429F12AAC0003C57A /* AppDelegate.swift in Sources */,
 				9661855129F14EA20003C57A /* ShiftBirthdateView.swift in Sources */,
+				96FD00DB29F5264D0049BCCE /* RegistrationCheckerViewController.swift in Sources */,
 				9661851629F12AAC0003C57A /* SceneDelegate.swift in Sources */,
 				96FD00D629F50BFE0049BCCE /* KeychainWrapper.swift in Sources */,
 				9661856A29F291970003C57A /* RegistrationTextFieldHelper.swift in Sources */,

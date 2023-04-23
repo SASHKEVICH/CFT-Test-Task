@@ -238,5 +238,6 @@ private extension PasswordRegistrationViewController {
     @objc
     func didTapConfirmRegistrationButton() {
         presenter?.didTapConfirmRegistrationButton()
+        UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
     }
 }

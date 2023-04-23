@@ -12,25 +12,16 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        let nameRegistrationViewController = NameRegistrationViewController()
-        let nameRegistrationPresenter = NameRegistrationPresenter(
-            textFieldHelper: RegistrationTextFieldHelper(),
-            registrationService: RegistrationService.shared)
+        let registrationCheckerPresenter = RegistrationCheckerPresenter(registrationService: RegistrationService.shared)
+        let registrationCheckerViewController = RegistrationCheckerViewController()
         
-        nameRegistrationPresenter.view = nameRegistrationViewController
-        nameRegistrationViewController.presenter = nameRegistrationPresenter
+        registrationCheckerPresenter.view = registrationCheckerViewController
+        registrationCheckerViewController.presenter = registrationCheckerPresenter
         
-        let navigationController = UINavigationController(
-            rootViewController: nameRegistrationViewController)
-        
-        navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.navigationBar.tintColor = .shiftRed
-        
-        window.rootViewController = navigationController
+        window.rootViewController = registrationCheckerViewController
         window.makeKeyAndVisible()
     }
 }
