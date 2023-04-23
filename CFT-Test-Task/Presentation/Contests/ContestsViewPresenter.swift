@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+protocol ContestsViewPresenterProtocol {
+    var view: ContestsViewControllerProtocol? { get set }
+    func viewDidLoad()
+}
+
+final class ContestsViewPresenter: ContestsViewPresenterProtocol {
+    weak var view: ContestsViewControllerProtocol?
+    
+    func viewDidLoad() {
+        print(#function)
+    }
+}
