@@ -221,7 +221,9 @@ private extension NameRegistrationViewController {
         let datePickerDelegate = BirthdateViewDatePickerDelegate()
         
         let dateRegistrationVC = DateRegistrationViewController()
-        let dateRegistrationPresenter = DateRegistrationPresenter(datePickerDelegate: datePickerDelegate)
+        let dateRegistrationPresenter = DateRegistrationPresenter(
+            datePickerDelegate: datePickerDelegate,
+            registrationService: RegistrationService.shared)
         
         dateRegistrationVC.presenter = dateRegistrationPresenter
         dateRegistrationPresenter.view = dateRegistrationVC

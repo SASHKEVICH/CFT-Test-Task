@@ -15,9 +15,7 @@ protocol RegistrationServiceProtocol {
 final class RegistrationService: RegistrationServiceProtocol {
     private var user: User = User(name: "", surname: "", birthdate: Date())
     
-    static var shared: RegistrationServiceProtocol {
-        RegistrationService()
-    }
+    static let shared: RegistrationServiceProtocol = RegistrationService()
     
     func register(name: String, surname: String) {
         let newUser = User(
