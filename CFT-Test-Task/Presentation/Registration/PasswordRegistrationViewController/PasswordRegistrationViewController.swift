@@ -50,7 +50,7 @@ extension PasswordRegistrationViewController {
     }
     
     func hidePasswordErrorLabel() {
-        passwordConfirmationTextFieldTopConstraint?.constant = 40
+        passwordConfirmationTextFieldTopConstraint?.constant = 30
         toggleAppearence(errorLabel: passwordErrorLabel, shouldHidden: true)
     }
     
@@ -213,7 +213,7 @@ private extension PasswordRegistrationViewController {
         ])
         
         confirmRegistrationButton.title = "Продолжить"
-        confirmRegistrationButton.buttonState = .normal
+        confirmRegistrationButton.buttonState = .disabled
         confirmRegistrationButton.addTarget(self, action: #selector(didTapConfirmRegistrationButton), for: .touchUpInside)
     }
 }
@@ -237,6 +237,6 @@ private extension PasswordRegistrationViewController {
 private extension PasswordRegistrationViewController {
     @objc
     func didTapConfirmRegistrationButton() {
-        print("tap")
+        presenter?.didTapConfirmRegistrationButton()
     }
 }

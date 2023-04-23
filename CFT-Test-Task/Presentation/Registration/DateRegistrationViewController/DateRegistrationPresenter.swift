@@ -15,15 +15,22 @@ protocol DateRegistrationPresenterProtocol {
     var view: DateRegistrationViewControllerProtocol? { get set }
     var datePickerDelegate: BirthdateViewDatePickerDelegateProtocol? { get set }
     var chosenBirthdate: Date? { get }
+    func didTapContinueRegistrationButton()
 }
 
 final class DateRegistrationPresenter: DateRegistrationPresenterProtocol {
     weak var view: DateRegistrationViewControllerProtocol?
     
+    private let registrationService: RegistrationServiceProtocol
+    
     var chosenBirthdate: Date?
     var datePickerDelegate: BirthdateViewDatePickerDelegateProtocol?
     
-    init(datePickerDelegate: BirthdateViewDatePickerDelegateProtocol) {
+    init(
+        datePickerDelegate: BirthdateViewDatePickerDelegateProtocol,
+        registrationService: RegistrationServiceProtocol
+    ) {
+        self.registrationService = registrationService
         setupDatePickerDelegate(datePickerDelegate)
     }
 }
@@ -31,6 +38,11 @@ final class DateRegistrationPresenter: DateRegistrationPresenterProtocol {
 extension DateRegistrationPresenter: DateRegistrationPresenterDatePickerProtocol {
     func didChooseBirthdate(_ birthdate: Date) {
         validate(birthdate: birthdate)
+    }
+    
+    func didTapContinueRegistrationButton() {
+        guard let chosenBirthdate = chosenBirthdate else { return }
+        registrationService.register(birthdate: chosenBirthdate)
     }
 }
 

@@ -28,6 +28,9 @@
 		9661856729F285500003C57A /* ShiftCustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661856629F285500003C57A /* ShiftCustomLabel.swift */; };
 		9661856A29F291970003C57A /* RegistrationTextFieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661856929F291970003C57A /* RegistrationTextFieldHelper.swift */; };
 		96FD00CE29F44D940049BCCE /* NSRegularExpression+Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00CD29F44D940049BCCE /* NSRegularExpression+Matches.swift */; };
+		96FD00D129F4F4EE0049BCCE /* RegistrationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00D029F4F4EE0049BCCE /* RegistrationStore.swift */; };
+		96FD00D329F4FAF60049BCCE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00D229F4FAF60049BCCE /* User.swift */; };
+		96FD00D629F50BFE0049BCCE /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00D529F50BFE0049BCCE /* KeychainWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		9661856629F285500003C57A /* ShiftCustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCustomLabel.swift; sourceTree = "<group>"; };
 		9661856929F291970003C57A /* RegistrationTextFieldHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTextFieldHelper.swift; sourceTree = "<group>"; };
 		96FD00CD29F44D940049BCCE /* NSRegularExpression+Matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Matches.swift"; sourceTree = "<group>"; };
+		96FD00D029F4F4EE0049BCCE /* RegistrationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStore.swift; sourceTree = "<group>"; };
+		96FD00D229F4FAF60049BCCE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		96FD00D529F50BFE0049BCCE /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,7 @@
 		9661854529F1312B0003C57A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				96FD00D229F4FAF60049BCCE /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,7 +177,8 @@
 		9661854629F1312F0003C57A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				9661855A29F26F520003C57A /* RegistrationService.swift */,
+				96FD00D429F50BF10049BCCE /* KeyChainWrapper */,
+				96FD00CF29F4F4E10049BCCE /* Registration */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -249,6 +257,23 @@
 				9661856929F291970003C57A /* RegistrationTextFieldHelper.swift */,
 			);
 			path = TextFieldHelper;
+			sourceTree = "<group>";
+		};
+		96FD00CF29F4F4E10049BCCE /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				9661855A29F26F520003C57A /* RegistrationService.swift */,
+				96FD00D029F4F4EE0049BCCE /* RegistrationStore.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		96FD00D429F50BF10049BCCE /* KeyChainWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				96FD00D529F50BFE0049BCCE /* KeychainWrapper.swift */,
+			);
+			path = KeyChainWrapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,8 +412,10 @@
 				9661851429F12AAC0003C57A /* AppDelegate.swift in Sources */,
 				9661855129F14EA20003C57A /* ShiftBirthdateView.swift in Sources */,
 				9661851629F12AAC0003C57A /* SceneDelegate.swift in Sources */,
+				96FD00D629F50BFE0049BCCE /* KeychainWrapper.swift in Sources */,
 				9661856A29F291970003C57A /* RegistrationTextFieldHelper.swift in Sources */,
 				96FD00CE29F44D940049BCCE /* NSRegularExpression+Matches.swift in Sources */,
+				96FD00D329F4FAF60049BCCE /* User.swift in Sources */,
 				9661855B29F26F520003C57A /* RegistrationService.swift in Sources */,
 				9635D8FE29F41E9900C4652F /* DateRegistrationPresenter.swift in Sources */,
 				9635D90229F4227300C4652F /* BirthdateViewDatePickerDelegate.swift in Sources */,
@@ -399,6 +426,7 @@
 				9661855929F26EC00003C57A /* PasswordRegistrationViewController.swift in Sources */,
 				9635D90529F4435000C4652F /* PasswordRegistrationPresenter.swift in Sources */,
 				9661856729F285500003C57A /* ShiftCustomLabel.swift in Sources */,
+				96FD00D129F4F4EE0049BCCE /* RegistrationStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -216,10 +216,14 @@ private extension NameRegistrationViewController {
 private extension NameRegistrationViewController {
     @objc
     func didTapConfirmRegistrationButton() {
+        presenter?.didTapContinueRegistrationButton()
+        
         let datePickerDelegate = BirthdateViewDatePickerDelegate()
         
         let dateRegistrationVC = DateRegistrationViewController()
-        let dateRegistrationPresenter = DateRegistrationPresenter(datePickerDelegate: datePickerDelegate)
+        let dateRegistrationPresenter = DateRegistrationPresenter(
+            datePickerDelegate: datePickerDelegate,
+            registrationService: RegistrationService.shared)
         
         dateRegistrationVC.presenter = dateRegistrationPresenter
         dateRegistrationPresenter.view = dateRegistrationVC
