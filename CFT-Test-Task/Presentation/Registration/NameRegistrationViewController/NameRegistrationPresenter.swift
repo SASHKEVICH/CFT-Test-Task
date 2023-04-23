@@ -12,12 +12,13 @@ protocol NameRegistrationPresenterProtocol {
     var textFieldHelper: RegistrationTextFieldHelperProtocol? { get }
     func didChangeNameTextField(text: String?)
     func didChangeSurnameTextField(text: String?)
+    func didTapContinueRegistrationButton()
 }
 
 final class NameRegistrationPresenter: NameRegistrationPresenterProtocol {
     weak var view: NameRegistrationViewControllerProtocol?
     
-    var textFieldHelper: RegistrationTextFieldHelperProtocol?
+    private let registrationService: RegistrationServiceProtocol
     
     private var doesNameMatchCondition: Bool = false {
         didSet { considerToEnablingContinueRegistrationButton() }
@@ -27,52 +28,62 @@ final class NameRegistrationPresenter: NameRegistrationPresenterProtocol {
         didSet { considerToEnablingContinueRegistrationButton() }
     }
     
-    init() {
-        setupTextFieldHelper()
-    }
-}
-
-private extension NameRegistrationPresenter {
-    func setupTextFieldHelper() {
-        let textFieldHelper = RegistrationTextFieldHelper()
+    private var name: String = ""
+    private var surname: String = ""
+    
+    var textFieldHelper: RegistrationTextFieldHelperProtocol?
+    
+    init(
+        textFieldHelper: RegistrationTextFieldHelperProtocol,
+        registrationService: RegistrationServiceProtocol
+    ) {
         self.textFieldHelper = textFieldHelper
+        self.registrationService = registrationService
     }
 }
 
 extension NameRegistrationPresenter {
     func didChangeNameTextField(text: String?) {
-        guard let view = view, let text = text, text.count != 0 else {
+        guard let view = view, let name = text, name.count != 0 else {
             self.doesNameMatchCondition = false
             self.view?.hideNameErrorLabel()
             return
         }
         
-        if text.count <= 1 {
+        if name.count <= 1 {
             self.doesNameMatchCondition = false
             view.showNameErrorLabel()
         } else {
             self.doesNameMatchCondition = true
+            self.name = name
             view.hideNameErrorLabel()
         }
     }
     
     func didChangeSurnameTextField(text: String?) {
-        guard let view = view, let text = text, text.count != 0 else {
+        guard let view = view, let surname = text, surname.count != 0 else {
             self.doesSurnameMatchCondition = false
             self.view?.hideSurnameErrorLabel()
             return
         }
         
-        if text.count <= 2 {
+        if surname.count <= 2 {
             self.doesSurnameMatchCondition = false
             view.showSurnameErrorLabel()
         } else {
             self.doesSurnameMatchCondition = true
+            self.surname = surname
             view.hideSurnameErrorLabel()
         }
     }
     
-    private func considerToEnablingContinueRegistrationButton() {
+    func didTapContinueRegistrationButton() {
+        registrationService.register(name: name, surname: surname)
+    }
+}
+
+private extension NameRegistrationPresenter {
+    func considerToEnablingContinueRegistrationButton() {
         if doesNameMatchCondition && doesSurnameMatchCondition {
             view?.enableContinueRegistrationButton()
         } else {

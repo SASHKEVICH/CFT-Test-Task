@@ -17,7 +17,9 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         
         let nameRegistrationViewController = NameRegistrationViewController()
-        let nameRegistrationPresenter = NameRegistrationPresenter()
+        let nameRegistrationPresenter = NameRegistrationPresenter(
+            textFieldHelper: RegistrationTextFieldHelper(),
+            registrationService: RegistrationService.shared)
         
         nameRegistrationPresenter.view = nameRegistrationViewController
         nameRegistrationViewController.presenter = nameRegistrationPresenter
