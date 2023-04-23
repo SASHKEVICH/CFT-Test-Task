@@ -10,6 +10,7 @@ import Foundation
 struct RegistrationStore {
     private let userDefaults = UserDefaults.standard
     private let keychainWrapper = KeychainWrapper()
+    
     private let userKey = "userKey"
 }
 
@@ -31,6 +32,10 @@ extension RegistrationStore {
         else { return nil }
         
         return user
+    }
+    
+    func removeUser() {
+        userDefaults.removeObject(forKey: userKey)
     }
 }
 
@@ -55,6 +60,18 @@ extension RegistrationStore {
         } catch {
             assertionFailure("\(error)")
             return nil
+        }
+    }
+}
+
+// MARK: - Removing info from user defaults and keychain
+extension RegistrationStore {
+    func removeAll() {
+        do {
+            try keychainWrapper.removeAll()
+            removeUser()
+        } catch {
+            print(error)
         }
     }
 }

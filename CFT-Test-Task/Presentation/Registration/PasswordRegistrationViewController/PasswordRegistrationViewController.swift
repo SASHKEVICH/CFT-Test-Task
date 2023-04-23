@@ -212,7 +212,7 @@ private extension PasswordRegistrationViewController {
             confirmRegistrationButton.heightAnchor.constraint(equalToConstant: viewsHeight)
         ])
         
-        confirmRegistrationButton.title = "Продолжить"
+        confirmRegistrationButton.title = "Зарегистрироваться"
         confirmRegistrationButton.buttonState = .disabled
         confirmRegistrationButton.addTarget(self, action: #selector(didTapConfirmRegistrationButton), for: .touchUpInside)
     }

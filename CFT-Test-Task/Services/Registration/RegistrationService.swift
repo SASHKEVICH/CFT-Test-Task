@@ -8,11 +8,12 @@
 import Foundation
 
 protocol RegistrationServiceProtocol {
+    var isThereAUserInStore: Bool { get }
+    var userCredentials: String? { get }
     func register(name: String, surname: String)
     func register(birthdate: Date)
     func confirmRegistration(with password: String)
-    var isThereAUserInStore: Bool { get }
-    var userCredentials: String? { get }
+    func removeAll()
 }
 
 final class RegistrationService: RegistrationServiceProtocol {
@@ -47,6 +48,10 @@ extension RegistrationService {
     func confirmRegistration(with password: String) {
         print(user, password)
         registrationStore.store(password: password, for: user)
+    }
+    
+    func removeAll() {
+        registrationStore.removeAll()
     }
 }
 
