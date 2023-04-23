@@ -15,6 +15,7 @@ protocol RegistrationServiceProtocol {
 
 final class RegistrationService: RegistrationServiceProtocol {
     private var user: User = User(name: "", surname: "", birthdate: Date())
+    private let registrationStore = RegistrationStore()
     
     static let shared: RegistrationServiceProtocol = RegistrationService()
     
@@ -24,6 +25,9 @@ final class RegistrationService: RegistrationServiceProtocol {
             surname: surname,
             birthdate: user.birthdate)
         self.user = newUser
+        
+        registrationStore.store(user: self.user)
+        print(registrationStore.getUser())
     }
     
     func register(birthdate: Date) {
@@ -32,9 +36,13 @@ final class RegistrationService: RegistrationServiceProtocol {
             surname: user.surname,
             birthdate: birthdate)
         self.user = newUser
+        
+        registrationStore.store(user: self.user)
+        print(registrationStore.getUser())
     }
     
     func confirmRegistration(with password: String) {
         print(user, password)
+        registrationStore.store(password: password, for: user)
     }
 }

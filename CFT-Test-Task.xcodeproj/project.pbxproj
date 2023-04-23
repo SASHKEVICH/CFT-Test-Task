@@ -30,6 +30,7 @@
 		96FD00CE29F44D940049BCCE /* NSRegularExpression+Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00CD29F44D940049BCCE /* NSRegularExpression+Matches.swift */; };
 		96FD00D129F4F4EE0049BCCE /* RegistrationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00D029F4F4EE0049BCCE /* RegistrationStore.swift */; };
 		96FD00D329F4FAF60049BCCE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00D229F4FAF60049BCCE /* User.swift */; };
+		96FD00D629F50BFE0049BCCE /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00D529F50BFE0049BCCE /* KeychainWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		96FD00CD29F44D940049BCCE /* NSRegularExpression+Matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Matches.swift"; sourceTree = "<group>"; };
 		96FD00D029F4F4EE0049BCCE /* RegistrationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStore.swift; sourceTree = "<group>"; };
 		96FD00D229F4FAF60049BCCE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		96FD00D529F50BFE0049BCCE /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 		9661854629F1312F0003C57A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				96FD00D429F50BF10049BCCE /* KeyChainWrapper */,
 				96FD00CF29F4F4E10049BCCE /* Registration */,
 			);
 			path = Services;
@@ -263,6 +266,14 @@
 				96FD00D029F4F4EE0049BCCE /* RegistrationStore.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		96FD00D429F50BF10049BCCE /* KeyChainWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				96FD00D529F50BFE0049BCCE /* KeychainWrapper.swift */,
+			);
+			path = KeyChainWrapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,6 +412,7 @@
 				9661851429F12AAC0003C57A /* AppDelegate.swift in Sources */,
 				9661855129F14EA20003C57A /* ShiftBirthdateView.swift in Sources */,
 				9661851629F12AAC0003C57A /* SceneDelegate.swift in Sources */,
+				96FD00D629F50BFE0049BCCE /* KeychainWrapper.swift in Sources */,
 				9661856A29F291970003C57A /* RegistrationTextFieldHelper.swift in Sources */,
 				96FD00CE29F44D940049BCCE /* NSRegularExpression+Matches.swift in Sources */,
 				96FD00D329F4FAF60049BCCE /* User.swift in Sources */,

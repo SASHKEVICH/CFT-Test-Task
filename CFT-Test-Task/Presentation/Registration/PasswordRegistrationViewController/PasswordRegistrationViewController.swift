@@ -213,7 +213,7 @@ private extension PasswordRegistrationViewController {
         ])
         
         confirmRegistrationButton.title = "Продолжить"
-        confirmRegistrationButton.buttonState = .normal
+        confirmRegistrationButton.buttonState = .disabled
         confirmRegistrationButton.addTarget(self, action: #selector(didTapConfirmRegistrationButton), for: .touchUpInside)
     }
 }
