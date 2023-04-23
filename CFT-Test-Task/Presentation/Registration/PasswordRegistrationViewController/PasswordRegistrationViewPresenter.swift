@@ -1,5 +1,5 @@
 //
-//  PasswordRegistrationPresenter.swift
+//  PasswordRegistrationViewPresenter.swift
 //  CFT-Test-Task
 //
 //  Created by Александр Бекренев on 22.04.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol PasswordRegistrationPresenterProtocol {
+protocol PasswordRegistrationViewPresenterProtocol {
     var view: PasswordRegistrationViewControllerProtocol? { get set }
     var textFieldHelper: RegistrationTextFieldHelper? { get }
     func didChangePasswordTextField(text: String?)
@@ -15,7 +15,7 @@ protocol PasswordRegistrationPresenterProtocol {
     func didTapConfirmRegistrationButton()
 }
 
-final class PasswordRegistrationPresenter: PasswordRegistrationPresenterProtocol {
+final class PasswordRegistrationViewPresenter: PasswordRegistrationViewPresenterProtocol {
     weak var view: PasswordRegistrationViewControllerProtocol?
     var textFieldHelper: RegistrationTextFieldHelper?
     
@@ -40,7 +40,7 @@ final class PasswordRegistrationPresenter: PasswordRegistrationPresenterProtocol
     }
 }
 
-extension PasswordRegistrationPresenter {
+extension PasswordRegistrationViewPresenter {
     func didChangePasswordTextField(text: String?) {
         guard let view = view, let password = text, password.count != 0 else {
             self.doesPasswordMatchCondition = false
@@ -87,7 +87,7 @@ extension PasswordRegistrationPresenter {
     }
 }
 
-private extension PasswordRegistrationPresenter {
+private extension PasswordRegistrationViewPresenter {
     func considerToEnablingContinueRegistrationButton() {
         if doesPasswordMatchCondition && doesPasswordConfirmationMatchCondition {
             view?.enableConfirmRegistrationButton()

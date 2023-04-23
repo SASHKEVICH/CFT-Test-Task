@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PasswordRegistrationViewControllerProtocol: AnyObject {
-    var presenter: PasswordRegistrationPresenterProtocol? { get set }
+    var presenter: PasswordRegistrationViewPresenterProtocol? { get set }
     func showPasswordErrorLabel()
     func hidePasswordErrorLabel()
     func showPasswordConfirmationErrorLabel()
@@ -29,7 +29,7 @@ final class PasswordRegistrationViewController: UIViewController, PasswordRegist
     
     private var passwordConfirmationTextFieldTopConstraint: NSLayoutConstraint?
     
-    var presenter: PasswordRegistrationPresenterProtocol?
+    var presenter: PasswordRegistrationViewPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()

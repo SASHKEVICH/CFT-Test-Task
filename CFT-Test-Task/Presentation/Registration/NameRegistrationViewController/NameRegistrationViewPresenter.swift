@@ -1,5 +1,5 @@
 //
-//  NameRegistrationPresenter.swift
+//  NameRegistrationViewPresenter.swift
 //  CFT-Test-Task
 //
 //  Created by Александр Бекренев on 21.04.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol NameRegistrationPresenterProtocol {
+protocol NameRegistrationViewPresenterProtocol {
     var view: NameRegistrationViewControllerProtocol? { get set }
     var textFieldHelper: RegistrationTextFieldHelperProtocol? { get }
     func didChangeNameTextField(text: String?)
@@ -15,7 +15,7 @@ protocol NameRegistrationPresenterProtocol {
     func didTapContinueRegistrationButton()
 }
 
-final class NameRegistrationPresenter: NameRegistrationPresenterProtocol {
+final class NameRegistrationViewPresenter: NameRegistrationViewPresenterProtocol {
     weak var view: NameRegistrationViewControllerProtocol?
     
     private let registrationService: RegistrationServiceProtocol
@@ -42,7 +42,7 @@ final class NameRegistrationPresenter: NameRegistrationPresenterProtocol {
     }
 }
 
-extension NameRegistrationPresenter {
+extension NameRegistrationViewPresenter {
     func didChangeNameTextField(text: String?) {
         guard let view = view, let name = text, name.count != 0 else {
             self.doesNameMatchCondition = false
@@ -82,7 +82,7 @@ extension NameRegistrationPresenter {
     }
 }
 
-private extension NameRegistrationPresenter {
+private extension NameRegistrationViewPresenter {
     func considerToEnablingContinueRegistrationButton() {
         if doesNameMatchCondition && doesSurnameMatchCondition {
             view?.enableContinueRegistrationButton()

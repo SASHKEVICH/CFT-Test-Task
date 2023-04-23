@@ -87,7 +87,7 @@ extension RegistrationCheckerViewController {
     
     private func getRegistrationViewController() -> UINavigationController {
         let nameRegistrationViewController = NameRegistrationViewController()
-        let nameRegistrationPresenter = NameRegistrationPresenter(
+        let nameRegistrationPresenter = NameRegistrationViewPresenter(
             textFieldHelper: RegistrationTextFieldHelper(),
             registrationService: RegistrationService.shared)
         
