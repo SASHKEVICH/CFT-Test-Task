@@ -11,7 +11,7 @@ protocol RegistrationCheckerPresenterProtocol {
     var view: RegistrationCheckerViewControllerProtocol? { get set }
     func viewDidAppear()
     func getNameRegistrationViewController() -> NameRegistrationViewController
-    func getContestsViewController() -> ContestsViewController
+    func getContestsViewController() -> NewsViewController
 }
 
 final class RegistrationCheckerPresenter: RegistrationCheckerPresenterProtocol {
@@ -45,13 +45,15 @@ extension RegistrationCheckerPresenter {
         return nameRegistrationViewController
     }
     
-    func getContestsViewController() -> ContestsViewController {
-        let contestsViewController = ContestsViewController()
-        let contestsViewPresenter = ContestsViewPresenter()
+    func getContestsViewController() -> NewsViewController {
+        let newsViewController = NewsViewController()
         
-        contestsViewController.presenter = contestsViewPresenter
-        contestsViewPresenter.view = contestsViewController
+        let newsTableViewHelper = NewsTableViewHelper()
+        let newsViewPresenter = NewsViewPresenter(tableViewHelper: newsTableViewHelper)
         
-        return contestsViewController
+        newsViewController.presenter = newsViewPresenter
+        newsViewPresenter.view = newsViewController
+        
+        return newsViewController
     }
 }

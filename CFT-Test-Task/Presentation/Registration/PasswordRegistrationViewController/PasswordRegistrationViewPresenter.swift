@@ -9,7 +9,7 @@ import Foundation
 
 protocol PasswordRegistrationViewPresenterProtocol {
     var view: PasswordRegistrationViewControllerProtocol? { get set }
-    var textFieldHelper: RegistrationTextFieldHelper? { get }
+    var textFieldHelper: RegistrationTextFieldHelper { get }
     func didChangePasswordTextField(text: String?)
     func didChangePasswordConfirmationTextField(text: String?)
     func didTapConfirmRegistrationButton()
@@ -17,7 +17,7 @@ protocol PasswordRegistrationViewPresenterProtocol {
 
 final class PasswordRegistrationViewPresenter: PasswordRegistrationViewPresenterProtocol {
     weak var view: PasswordRegistrationViewControllerProtocol?
-    var textFieldHelper: RegistrationTextFieldHelper?
+    var textFieldHelper: RegistrationTextFieldHelper
     
     private let registrationService: RegistrationServiceProtocol
     
