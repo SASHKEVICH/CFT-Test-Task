@@ -19,4 +19,8 @@ extension UIColor {
     static var shiftGray: UIColor? {
         UIColor(named: "ShiftGray")
     }
+    
+    static var shiftCellBackground: UIColor? {
+        UIColor(named: "ShiftCellBackground")
+    }
 }
