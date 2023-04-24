@@ -83,7 +83,7 @@ private extension NewsService {
             URLQueryItem(name: "page", value: "\(page)"),
             URLQueryItem(name: "pageSize", value: "10"),
             URLQueryItem(name: "language", value: "ru"),
-            URLQueryItem(name: "q", value: "CFT"),
+            URLQueryItem(name: "q", value: "tech"),
             URLQueryItem(name: "apiKey", value: apiConfiguration.apiKey)
         ]
         
