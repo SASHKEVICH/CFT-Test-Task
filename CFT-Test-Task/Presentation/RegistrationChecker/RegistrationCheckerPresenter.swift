@@ -49,7 +49,8 @@ extension RegistrationCheckerPresenter {
         let newsViewController = NewsViewController()
         
         let newsTableViewHelper = NewsTableViewHelper()
-        let newsViewPresenter = NewsViewPresenter(tableViewHelper: newsTableViewHelper)
+        let newsService = NewsService()
+        let newsViewPresenter = NewsViewPresenter(tableViewHelper: newsTableViewHelper, newsService: newsService)
         
         newsViewController.presenter = newsViewPresenter
         newsViewPresenter.view = newsViewController

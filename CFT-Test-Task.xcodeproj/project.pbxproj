@@ -10,6 +10,12 @@
 		961B60CB29F6AD19009F838A /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60CA29F6AD19009F838A /* News.swift */; };
 		961B60CD29F6AE8F009F838A /* UITableView+LastCellIndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60CC29F6AE8F009F838A /* UITableView+LastCellIndexPath.swift */; };
 		961B60CF29F6B56F009F838A /* NewsTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60CE29F6B56F009F838A /* NewsTableViewHeaderView.swift */; };
+		961B60D229F6D0C8009F838A /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60D129F6D0C8009F838A /* NewsService.swift */; };
+		961B60D629F6D189009F838A /* ApiConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60D529F6D189009F838A /* ApiConfiguration.swift */; };
+		961B60D929F6D82F009F838A /* NewsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60D829F6D82F009F838A /* NewsResult.swift */; };
+		961B60DF29F6DAD7009F838A /* URLSession+DataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60DB29F6DAD7009F838A /* URLSession+DataTask.swift */; };
+		961B60E029F6DAD7009F838A /* URLSession+StartLoadingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60DC29F6DAD7009F838A /* URLSession+StartLoadingObject.swift */; };
+		961B60E129F6DAD7009F838A /* URLSessionTask+IsStillRunning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60DD29F6DAD7009F838A /* URLSessionTask+IsStillRunning.swift */; };
 		9635D8FE29F41E9900C4652F /* DateRegistrationViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9635D8FD29F41E9900C4652F /* DateRegistrationViewPresenter.swift */; };
 		9635D90229F4227300C4652F /* BirthdateViewDatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9635D90129F4227300C4652F /* BirthdateViewDatePickerDelegate.swift */; };
 		9635D90529F4435000C4652F /* PasswordRegistrationViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9635D90429F4435000C4652F /* PasswordRegistrationViewPresenter.swift */; };
@@ -56,6 +62,12 @@
 		961B60CA29F6AD19009F838A /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		961B60CC29F6AE8F009F838A /* UITableView+LastCellIndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+LastCellIndexPath.swift"; sourceTree = "<group>"; };
 		961B60CE29F6B56F009F838A /* NewsTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewHeaderView.swift; sourceTree = "<group>"; };
+		961B60D129F6D0C8009F838A /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
+		961B60D529F6D189009F838A /* ApiConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfiguration.swift; sourceTree = "<group>"; };
+		961B60D829F6D82F009F838A /* NewsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResult.swift; sourceTree = "<group>"; };
+		961B60DB29F6DAD7009F838A /* URLSession+DataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+DataTask.swift"; sourceTree = "<group>"; };
+		961B60DC29F6DAD7009F838A /* URLSession+StartLoadingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+StartLoadingObject.swift"; sourceTree = "<group>"; };
+		961B60DD29F6DAD7009F838A /* URLSessionTask+IsStillRunning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSessionTask+IsStillRunning.swift"; sourceTree = "<group>"; };
 		9635D8FD29F41E9900C4652F /* DateRegistrationViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRegistrationViewPresenter.swift; sourceTree = "<group>"; };
 		9635D90129F4227300C4652F /* BirthdateViewDatePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdateViewDatePickerDelegate.swift; sourceTree = "<group>"; };
 		9635D90429F4435000C4652F /* PasswordRegistrationViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRegistrationViewPresenter.swift; sourceTree = "<group>"; };
@@ -109,6 +121,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		961B60D029F6D0C0009F838A /* News */ = {
+			isa = PBXGroup;
+			children = (
+				961B60D129F6D0C8009F838A /* NewsService.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		961B60D329F6D141009F838A /* ApiConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				961B60D529F6D189009F838A /* ApiConfiguration.swift */,
+			);
+			path = ApiConfiguration;
+			sourceTree = "<group>";
+		};
+		961B60D729F6D824009F838A /* News */ = {
+			isa = PBXGroup;
+			children = (
+				961B60CA29F6AD19009F838A /* News.swift */,
+				961B60D829F6D82F009F838A /* NewsResult.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		961B60E229F6DB27009F838A /* URLSession */ = {
+			isa = PBXGroup;
+			children = (
+				961B60DB29F6DAD7009F838A /* URLSession+DataTask.swift */,
+				961B60DC29F6DAD7009F838A /* URLSession+StartLoadingObject.swift */,
+				961B60DD29F6DAD7009F838A /* URLSessionTask+IsStillRunning.swift */,
+			);
+			path = URLSession;
+			sourceTree = "<group>";
+		};
 		9635D90329F4229200C4652F /* BirthdateViewDatePickerDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +185,7 @@
 		9661851229F12AAC0003C57A /* CFT-Test-Task */ = {
 			isa = PBXGroup;
 			children = (
+				961B60D329F6D141009F838A /* ApiConfiguration */,
 				9661854829F138250003C57A /* Helpers */,
 				9661854629F1312F0003C57A /* Services */,
 				9661854529F1312B0003C57A /* Model */,
@@ -173,8 +221,8 @@
 		9661854529F1312B0003C57A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				961B60D729F6D824009F838A /* News */,
 				96FD00D229F4FAF60049BCCE /* User.swift */,
-				961B60CA29F6AD19009F838A /* News.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +230,7 @@
 		9661854629F1312F0003C57A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				961B60D029F6D0C0009F838A /* News */,
 				96FD00D429F50BF10049BCCE /* KeyChainWrapper */,
 				96FD00CF29F4F4E10049BCCE /* Registration */,
 			);
@@ -202,6 +251,7 @@
 		9661854829F138250003C57A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				961B60E229F6DB27009F838A /* URLSession */,
 				9661854929F138350003C57A /* UIColor+Extensions.swift */,
 				96FD00CD29F44D940049BCCE /* NSRegularExpression+Matches.swift */,
 				961B60CC29F6AE8F009F838A /* UITableView+LastCellIndexPath.swift */,
@@ -414,6 +464,7 @@
 				9661855529F25C2C0003C57A /* ShiftCustomButton.swift in Sources */,
 				9661851829F12AAC0003C57A /* NameRegistrationViewController.swift in Sources */,
 				9661854E29F13E3F0003C57A /* ShiftCustomTextField.swift in Sources */,
+				961B60D629F6D189009F838A /* ApiConfiguration.swift in Sources */,
 				96FD00DD29F528670049BCCE /* RegistrationCheckerPresenter.swift in Sources */,
 				9661851429F12AAC0003C57A /* AppDelegate.swift in Sources */,
 				9661855129F14EA20003C57A /* ShiftBirthdateView.swift in Sources */,
@@ -427,11 +478,14 @@
 				96FD00CE29F44D940049BCCE /* NSRegularExpression+Matches.swift in Sources */,
 				96FD00D329F4FAF60049BCCE /* User.swift in Sources */,
 				9661855B29F26F520003C57A /* RegistrationService.swift in Sources */,
+				961B60DF29F6DAD7009F838A /* URLSession+DataTask.swift in Sources */,
+				961B60D229F6D0C8009F838A /* NewsService.swift in Sources */,
 				9635D8FE29F41E9900C4652F /* DateRegistrationViewPresenter.swift in Sources */,
 				9635D90229F4227300C4652F /* BirthdateViewDatePickerDelegate.swift in Sources */,
 				9661854A29F138350003C57A /* UIColor+Extensions.swift in Sources */,
 				9661855D29F276F20003C57A /* ShiftCustomStackView.swift in Sources */,
 				96E4DED429F58E4500156F0F /* NewsViewController.swift in Sources */,
+				961B60E129F6DAD7009F838A /* URLSessionTask+IsStillRunning.swift in Sources */,
 				961B60CB29F6AD19009F838A /* News.swift in Sources */,
 				9661855729F26EAF0003C57A /* DateRegistrationViewController.swift in Sources */,
 				961B60CD29F6AE8F009F838A /* UITableView+LastCellIndexPath.swift in Sources */,
@@ -441,6 +495,8 @@
 				9661856729F285500003C57A /* ShiftCustomLabel.swift in Sources */,
 				96E4DEDB29F59B6A00156F0F /* NewsTableViewCell.swift in Sources */,
 				96FD00D129F4F4EE0049BCCE /* RegistrationStore.swift in Sources */,
+				961B60D929F6D82F009F838A /* NewsResult.swift in Sources */,
+				961B60E029F6DAD7009F838A /* URLSession+StartLoadingObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
