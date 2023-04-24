@@ -7,12 +7,12 @@
 
 import UIKit
 
-enum ShiftCustomButtonState {
-    case normal
-    case disabled
-}
-
 final class ShiftCustomButton: UIButton {
+    enum ShiftCustomButtonState {
+        case normal
+        case disabled
+    }
+    
     var title: String?
     var buttonState: ShiftCustomButtonState? {
         didSet {

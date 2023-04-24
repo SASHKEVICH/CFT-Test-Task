@@ -7,12 +7,12 @@
 
 import UIKit
 
-enum ShiftCustomTextFieldType {
-    case password
-    case normal
-}
-
 final class ShiftCustomTextField: UITextField {
+    enum ShiftCustomTextFieldType {
+        case password
+        case normal
+    }
+    
     private let padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     private let rightViewPadding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
     
