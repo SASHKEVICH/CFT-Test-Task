@@ -63,6 +63,16 @@ final class NewsTableViewHelper: NSObject, NewsTableViewHelperProtocol {
         80
     }
     
+    func tableView(
+        _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath
+    ) {
+        if let visibleIndexPaths = tableView.indexPathsForVisibleRows, visibleIndexPaths.contains(indexPath) {
+            presenter?.requestFetchNewsNextPageIfLastCell(at: indexPath)
+        }
+    }
+    
     // MARK: - UITableViewDataSource
     func tableView(
         _ tableView: UITableView,

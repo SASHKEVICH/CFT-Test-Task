@@ -10,6 +10,7 @@ import Foundation
 protocol NewsViewPresenterTableViewHelperProtocol: AnyObject {
     var news: [News] { get set }
     func didTapNewsCell(_ cell: NewsTableViewCell)
+    func requestFetchNewsNextPageIfLastCell(at indexPath: IndexPath)
 }
 
 protocol NewsViewPresenterProtocol {
@@ -46,14 +47,21 @@ extension NewsViewPresenter: NewsViewPresenterTableViewHelperProtocol {
     func didTapNewsCell(_ cell: NewsTableViewCell) {
         print("tap cell")
     }
+    
+    func requestFetchNewsNextPageIfLastCell(at indexPath: IndexPath) {
+        let isNextCellLast = indexPath.row + 1 == news.count
+        if isNextCellLast {
+            requestNews()
+        }
+    }
 }
 
 private extension NewsViewPresenter {
     func handleFetchingNews(result: Result<NewsResult, Error>) {
         switch result {
         case .success(let newsResult):
-            self.news = newsResult.articles
-            view?.didRecieveNews()
+            self.news += newsResult.articles
+            view?.didUpdateNewsAnimated(newsCount: news.count)
             view?.hideActivityIndicator()
         case .failure(let error):
             print(error)
