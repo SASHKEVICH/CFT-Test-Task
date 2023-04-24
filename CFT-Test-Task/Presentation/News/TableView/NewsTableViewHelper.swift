@@ -89,6 +89,7 @@ final class NewsTableViewHelper: NSObject, NewsTableViewHelperProtocol {
         
         let news = presenter?.news[indexPath.row]
         cell.cellTitle = news?.title
+        configureAdditinalInfo(for: cell, news: news)
         
         cell.accessoryType = .disclosureIndicator
         
@@ -104,8 +105,19 @@ final class NewsTableViewHelper: NSObject, NewsTableViewHelperProtocol {
     }
 }
 
+// MARK: - NewsTableViewHeaderViewDelegate
 extension NewsTableViewHelper: NewsTableViewHeaderViewDelegate {
     func didTapGreetingsButton() {
         print("tap")
+    }
+}
+
+// MARK: - Private methods
+private extension NewsTableViewHelper {
+    func configureAdditinalInfo(for cell: NewsTableViewCell, news: News?) {
+        let author = news?.author ?? "Неизвестно"
+        let source = news?.source?.name ?? "Неизвестно"
+        let additionalInfo = author + " | " + source
+        cell.additionalInfo = additionalInfo
     }
 }

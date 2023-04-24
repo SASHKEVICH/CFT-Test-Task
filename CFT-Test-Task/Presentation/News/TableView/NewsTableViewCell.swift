@@ -37,7 +37,7 @@ final class NewsTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupCellTitleLabel()
-//        setupAdditionalInfoLabel()
+        setupAdditionalInfoLabel()
         setupDefaultCellBackground()
         
         separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
@@ -87,6 +87,7 @@ extension NewsTableViewCell {
     
     private func resetCell() {
         cellTitleLabel.text = ""
+        additionalInfoLabel.text = ""
         self.layer.masksToBounds = false
         self.layer.cornerRadius = 0
     }
@@ -99,14 +100,15 @@ private extension NewsTableViewCell {
         cellTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            cellTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 26),
+            cellTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             cellTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            cellTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -56),
-            cellTitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -25)
+            cellTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            cellTitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24)
         ])
         
         cellTitleLabel.textColor = .black
-        cellTitleLabel.font = .systemFont(ofSize: 17)
+        cellTitleLabel.numberOfLines = 0
+        cellTitleLabel.font = .systemFont(ofSize: 15)
     }
     
     func setupAdditionalInfoLabel() {
@@ -114,15 +116,14 @@ private extension NewsTableViewCell {
         additionalInfoLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            additionalInfoLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
             additionalInfoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            additionalInfoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -56),
-            additionalInfoLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 39),
-            additionalInfoLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14)
+            additionalInfoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            additionalInfoLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
         ])
         
-        additionalInfoLabel.font = .systemFont(ofSize: 17)
+        additionalInfoLabel.font = .systemFont(ofSize: 14)
         additionalInfoLabel.textColor = .gray
-        additionalInfoLabel.isHidden = true
     }
     
     func setupDefaultCellBackground() {
