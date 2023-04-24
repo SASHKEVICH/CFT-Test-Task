@@ -56,6 +56,13 @@ final class NewsTableViewHelper: NSObject, NewsTableViewHelperProtocol {
         80
     }
     
+    func tableView(
+        _ tableView: UITableView,
+        estimatedHeightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
+        80
+    }
+    
     // MARK: - UITableViewDataSource
     func tableView(
         _ tableView: UITableView,

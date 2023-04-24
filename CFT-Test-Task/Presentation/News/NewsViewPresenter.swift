@@ -9,6 +9,7 @@ import Foundation
 
 protocol NewsViewPresenterTableViewHelperProtocol: AnyObject {
     var news: [News] { get set }
+    func didTapNewsCell(_ cell: NewsTableViewCell)
 }
 
 protocol NewsViewPresenterProtocol {
@@ -18,34 +19,44 @@ protocol NewsViewPresenterProtocol {
 }
 
 final class NewsViewPresenter: NewsViewPresenterProtocol {
+    private var newsService: NewsServiceProtocol
+    
     weak var view: NewsViewControllerProtocol?
     var tableViewHelper: NewsTableViewHelperProtocol
     
-    var news: [News] = [
-        News(title: "kdkdkd"), News(title: "kdkdkd1"), News(title: "kdkdkd123"),
-        News(title: "kdkdkd"), News(title: "kdkdkd1"), News(title: "kdkdkd123"),
-        News(title: "kdkdkd"), News(title: "kdkdkd1"), News(title: "kdkdkd123"),
-        News(title: "kdkdkd"), News(title: "kdkdkd1"), News(title: "kdkdkd123"),
-        News(title: "kdkdkd"), News(title: "kdkdkd1"), News(title: "kdkdkd123"),
-        News(title: "kdkdkd"), News(title: "kdkdkd1"), News(title: "kdkdkd123"),
-        News(title: "kdkdkd"), News(title: "kdkdkd1"), News(title: "kdkdkd123"),
-        News(title: "kdkdkd"), News(title: "kdkdkd1"), News(title: "kdkdkd123"),
-        News(title: "kdkdkd"), News(title: "kdkdkd1"), News(title: "kdkdkd123"),
-        News(title: "kdkdkd"), News(title: "kdkdkd1"), News(title: "kdkdkd123"),
-        News(title: "kdkdkd"), News(title: "kdkdkd1"), News(title: "kdkdkd123"),
-        News(title: "kdkdkd"), News(title: "kdkdkd1"), News(title: "kdkdkd123"),
-    ]
+    var news: [News] = []
     
     func requestNews() {
-        view?.didRecieveNews()
+        view?.showActivityIndicator()
+        
+        newsService.fetchNewsNextPage { [weak self] result in
+            self?.handleFetchingNews(result: result)
+        }
     }
     
-    init(tableViewHelper: NewsTableViewHelperProtocol) {
+    init(tableViewHelper: NewsTableViewHelperProtocol, newsService: NewsServiceProtocol) {
         self.tableViewHelper = tableViewHelper
+        self.newsService = newsService
+        
         tableViewHelper.presenter = self
     }
 }
 
 extension NewsViewPresenter: NewsViewPresenterTableViewHelperProtocol {
-    
+    func didTapNewsCell(_ cell: NewsTableViewCell) {
+        print("tap cell")
+    }
+}
+
+private extension NewsViewPresenter {
+    func handleFetchingNews(result: Result<NewsResult, Error>) {
+        switch result {
+        case .success(let newsResult):
+            self.news = newsResult.articles
+            view?.didRecieveNews()
+            view?.hideActivityIndicator()
+        case .failure(let error):
+            print(error)
+        }
+    }
 }
