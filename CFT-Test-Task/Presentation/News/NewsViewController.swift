@@ -9,10 +9,14 @@ import UIKit
 
 protocol NewsViewControllerProtocol: AnyObject {
     var presenter: NewsViewPresenterProtocol? { get set }
+    func didRecieveNews()
+    func showActivityIndicator()
+    func hideActivityIndicator()
 }
 
 final class NewsViewController: UIViewController, NewsViewControllerProtocol {
     private let newsTableView = UITableView(frame: .zero, style: .insetGrouped)
+    private let activityIndicatorView = UIActivityIndicatorView()
     
     var presenter: NewsViewPresenterProtocol?
     
@@ -21,11 +25,24 @@ final class NewsViewController: UIViewController, NewsViewControllerProtocol {
         
         view.backgroundColor = .white
         navigationItem.title = "Новости"
-        presenter?.viewDidLoad()
+        presenter?.requestNews()
         
         setupNewsTableView()
-        
+        setupActivityIndicatorView()
+    }
+}
+
+extension NewsViewController {
+    func didRecieveNews() {
         newsTableView.reloadData()
+    }
+    
+    func showActivityIndicator() {
+        activityIndicatorView.startAnimating()
+    }
+    
+    func hideActivityIndicator() {
+        activityIndicatorView.stopAnimating()
     }
 }
 
@@ -48,5 +65,21 @@ private extension NewsViewController {
         newsTableView.dataSource = presenter?.tableViewHelper
         newsTableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
         newsTableView.register(NewsTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: NewsTableViewHeaderView.identifier)
+    }
+}
+
+private extension NewsViewController {
+    func setupActivityIndicatorView() {
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            activityIndicatorView.widthAnchor.constraint(equalToConstant: 50),
+            activityIndicatorView.heightAnchor.constraint(equalTo: activityIndicatorView.widthAnchor),
+        ])
+        
+        activityIndicatorView.backgroundColor = .white
     }
 }

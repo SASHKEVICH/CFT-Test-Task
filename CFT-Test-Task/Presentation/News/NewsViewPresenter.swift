@@ -14,7 +14,7 @@ protocol NewsViewPresenterTableViewHelperProtocol: AnyObject {
 protocol NewsViewPresenterProtocol {
     var view: NewsViewControllerProtocol? { get set }
     var tableViewHelper: NewsTableViewHelperProtocol { get set }
-    func viewDidLoad()
+    func requestNews()
 }
 
 final class NewsViewPresenter: NewsViewPresenterProtocol {
@@ -36,8 +36,8 @@ final class NewsViewPresenter: NewsViewPresenterProtocol {
         News(title: "kdkdkd"), News(title: "kdkdkd1"), News(title: "kdkdkd123"),
     ]
     
-    func viewDidLoad() {
-        print(#function)
+    func requestNews() {
+        view?.didRecieveNews()
     }
     
     init(tableViewHelper: NewsTableViewHelperProtocol) {
