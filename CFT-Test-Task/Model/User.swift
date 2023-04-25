@@ -7,8 +7,14 @@
 
 import Foundation
 
-struct User: Codable {
+public struct User: Codable {
     let name: String
     let surname: String
     let birthdate: Date
+    
+    public init(name: String, surname: String, birthdate: Date) {
+        self.name = name
+        self.surname = surname
+        self.birthdate = birthdate
+    }
 }
