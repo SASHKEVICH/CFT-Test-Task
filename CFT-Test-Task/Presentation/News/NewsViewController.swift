@@ -14,6 +14,7 @@ protocol NewsViewControllerProtocol: AnyObject {
     func showActivityIndicator()
     func hideActivityIndicator()
     func showNewsInSafari(with url: URL)
+    func showGreetings()
 }
 
 final class NewsViewController: UIViewController, NewsViewControllerProtocol {
@@ -56,6 +57,17 @@ extension NewsViewController {
         let vc = SFSafariViewController(url: url)
         vc.modalPresentationStyle = .formSheet
         present(vc, animated: true)
+    }
+    
+    func showGreetings() {
+        let greetingsViewController = GreetingsViewController()
+        let greetingsViewPresenter = GreetingsViewPresenter(registrationService: RegistrationService.shared)
+        
+        greetingsViewPresenter.view = greetingsViewController
+        greetingsViewController.presenter = greetingsViewPresenter
+        
+        greetingsViewController.modalPresentationStyle = .formSheet
+        present(greetingsViewController, animated: true)
     }
 }
 

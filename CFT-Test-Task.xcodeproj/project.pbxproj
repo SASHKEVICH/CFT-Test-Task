@@ -16,6 +16,8 @@
 		961B60DF29F6DAD7009F838A /* URLSession+DataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60DB29F6DAD7009F838A /* URLSession+DataTask.swift */; };
 		961B60E029F6DAD7009F838A /* URLSession+StartLoadingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60DC29F6DAD7009F838A /* URLSession+StartLoadingObject.swift */; };
 		961B60E129F6DAD7009F838A /* URLSessionTask+IsStillRunning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60DD29F6DAD7009F838A /* URLSessionTask+IsStillRunning.swift */; };
+		961B60E529F7CB1C009F838A /* GreetingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60E429F7CB1C009F838A /* GreetingsViewController.swift */; };
+		961B60E729F7CB8F009F838A /* GreetingsViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B60E629F7CB8F009F838A /* GreetingsViewPresenter.swift */; };
 		9635D8FE29F41E9900C4652F /* DateRegistrationViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9635D8FD29F41E9900C4652F /* DateRegistrationViewPresenter.swift */; };
 		9635D90229F4227300C4652F /* BirthdateViewDatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9635D90129F4227300C4652F /* BirthdateViewDatePickerDelegate.swift */; };
 		9635D90529F4435000C4652F /* PasswordRegistrationViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9635D90429F4435000C4652F /* PasswordRegistrationViewPresenter.swift */; };
@@ -68,6 +70,8 @@
 		961B60DB29F6DAD7009F838A /* URLSession+DataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+DataTask.swift"; sourceTree = "<group>"; };
 		961B60DC29F6DAD7009F838A /* URLSession+StartLoadingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+StartLoadingObject.swift"; sourceTree = "<group>"; };
 		961B60DD29F6DAD7009F838A /* URLSessionTask+IsStillRunning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSessionTask+IsStillRunning.swift"; sourceTree = "<group>"; };
+		961B60E429F7CB1C009F838A /* GreetingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsViewController.swift; sourceTree = "<group>"; };
+		961B60E629F7CB8F009F838A /* GreetingsViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsViewPresenter.swift; sourceTree = "<group>"; };
 		9635D8FD29F41E9900C4652F /* DateRegistrationViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRegistrationViewPresenter.swift; sourceTree = "<group>"; };
 		9635D90129F4227300C4652F /* BirthdateViewDatePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdateViewDatePickerDelegate.swift; sourceTree = "<group>"; };
 		9635D90429F4435000C4652F /* PasswordRegistrationViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRegistrationViewPresenter.swift; sourceTree = "<group>"; };
@@ -156,6 +160,15 @@
 			path = URLSession;
 			sourceTree = "<group>";
 		};
+		961B60E329F7CAFC009F838A /* Greetings */ = {
+			isa = PBXGroup;
+			children = (
+				961B60E429F7CB1C009F838A /* GreetingsViewController.swift */,
+				961B60E629F7CB8F009F838A /* GreetingsViewPresenter.swift */,
+			);
+			path = Greetings;
+			sourceTree = "<group>";
+		};
 		9635D90329F4229200C4652F /* BirthdateViewDatePickerDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +223,7 @@
 		9661854329F131230003C57A /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				961B60E329F7CAFC009F838A /* Greetings */,
 				96E4DECF29F58D8600156F0F /* News */,
 				96FD00D729F526300049BCCE /* RegistrationChecker */,
 				9661854B29F138920003C57A /* CustomViews */,
@@ -485,9 +499,11 @@
 				9661854A29F138350003C57A /* UIColor+Extensions.swift in Sources */,
 				9661855D29F276F20003C57A /* ShiftCustomStackView.swift in Sources */,
 				96E4DED429F58E4500156F0F /* NewsViewController.swift in Sources */,
+				961B60E529F7CB1C009F838A /* GreetingsViewController.swift in Sources */,
 				961B60E129F6DAD7009F838A /* URLSessionTask+IsStillRunning.swift in Sources */,
 				961B60CB29F6AD19009F838A /* News.swift in Sources */,
 				9661855729F26EAF0003C57A /* DateRegistrationViewController.swift in Sources */,
+				961B60E729F7CB8F009F838A /* GreetingsViewPresenter.swift in Sources */,
 				961B60CD29F6AE8F009F838A /* UITableView+LastCellIndexPath.swift in Sources */,
 				9661856329F27BB40003C57A /* NameRegistrationViewPresenter.swift in Sources */,
 				9661855929F26EC00003C57A /* PasswordRegistrationViewController.swift in Sources */,

@@ -11,6 +11,7 @@ protocol NewsViewPresenterTableViewHelperProtocol: AnyObject {
     var news: [News] { get set }
     func didTapNewsCell(at indexPath: IndexPath)
     func requestFetchNewsNextPageIfLastCell(at indexPath: IndexPath)
+    func didTapGreetingsButton()
 }
 
 protocol NewsViewPresenterProtocol {
@@ -66,6 +67,10 @@ extension NewsViewPresenter: NewsViewPresenterTableViewHelperProtocol {
         if isNextCellLast {
             requestNews()
         }
+    }
+    
+    func didTapGreetingsButton() {
+        view?.showGreetings()
     }
 }
 

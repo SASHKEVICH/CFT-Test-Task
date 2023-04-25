@@ -119,7 +119,7 @@ final class NewsTableViewHelper: NSObject, NewsTableViewHelperProtocol {
 // MARK: - NewsTableViewHeaderViewDelegate
 extension NewsTableViewHelper: NewsTableViewHeaderViewDelegate {
     func didTapGreetingsButton() {
-        print("tap")
+        presenter?.didTapGreetingsButton()
     }
 }
 
