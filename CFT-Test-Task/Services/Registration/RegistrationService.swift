@@ -46,7 +46,6 @@ extension RegistrationService {
     }
     
     func confirmRegistration(with password: String) {
-        print(user, password)
         registrationStore.store(password: password, for: user)
     }
     

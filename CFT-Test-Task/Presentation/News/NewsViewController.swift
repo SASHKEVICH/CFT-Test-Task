@@ -31,6 +31,7 @@ final class NewsViewController: UIViewController, NewsViewControllerProtocol {
         
         setupNewsTableView()
         setupActivityIndicatorView()
+        setupLogoutButton()
     }
 }
 
@@ -95,5 +96,57 @@ private extension NewsViewController {
         ])
         
         activityIndicatorView.backgroundColor = .white
+    }
+}
+
+// MARK: - Setup Logout button
+private extension NewsViewController {
+    func setupLogoutButton() {
+        guard let buttonImage = UIImage(systemName: "rectangle.portrait.and.arrow.right") else { return }
+        let logoutButton = UIBarButtonItem(
+            image: buttonImage,
+            style: .plain,
+            target: self,
+            action: #selector(didTapLogoutButton))
+        
+        logoutButton.tintColor = .shiftRed
+        navigationItem.rightBarButtonItem = logoutButton
+    }
+    
+    @objc
+    func didTapLogoutButton() {
+        let alertController = UIAlertController(
+            title: "Выход",
+            message: "Действительно хотите выйти?",
+            preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Да", style: .destructive) { [weak self] _ in
+            guard let self = self else { return }
+            self.presenter?.didTapLogoutButton()
+            self.switchToRegistrationCheckerViewController()
+        }
+        alertController.addAction(yesAction)
+        
+        let noAction = UIAlertAction(title: "Нет", style: .cancel) { _ in }
+        alertController.addAction(noAction)
+        
+        present(alertController, animated: true)
+    }
+    
+    private func switchToRegistrationCheckerViewController() {
+        guard let window = UIApplication.shared.windows.first else {
+            assertionFailure("cannot get window")
+            return
+        }
+        
+        let registrationCheckerViewController = RegistrationCheckerViewController()
+        let registrationCheckerPresenter = RegistrationCheckerPresenter(
+            registrationService: RegistrationService.shared)
+        
+        registrationCheckerPresenter.view = registrationCheckerViewController
+        registrationCheckerViewController.presenter = registrationCheckerPresenter
+        
+        window.rootViewController = registrationCheckerViewController
+        window.makeKeyAndVisible()
     }
 }

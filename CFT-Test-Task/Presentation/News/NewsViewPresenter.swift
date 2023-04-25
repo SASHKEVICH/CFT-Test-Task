@@ -17,10 +17,12 @@ protocol NewsViewPresenterProtocol {
     var view: NewsViewControllerProtocol? { get set }
     var tableViewHelper: NewsTableViewHelperProtocol { get set }
     func requestNews()
+    func didTapLogoutButton()
 }
 
 final class NewsViewPresenter: NewsViewPresenterProtocol {
     private var newsService: NewsServiceProtocol
+    private var registrationService: RegistrationServiceProtocol
     
     weak var view: NewsViewControllerProtocol?
     var tableViewHelper: NewsTableViewHelperProtocol
@@ -35,9 +37,18 @@ final class NewsViewPresenter: NewsViewPresenterProtocol {
         }
     }
     
-    init(tableViewHelper: NewsTableViewHelperProtocol, newsService: NewsServiceProtocol) {
+    func didTapLogoutButton() {
+        registrationService.removeAll()
+    }
+    
+    init(
+        tableViewHelper: NewsTableViewHelperProtocol,
+        newsService: NewsServiceProtocol,
+        registrationService: RegistrationServiceProtocol
+    ) {
         self.tableViewHelper = tableViewHelper
         self.newsService = newsService
+        self.registrationService = registrationService
         
         tableViewHelper.presenter = self
     }
