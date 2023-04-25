@@ -8,7 +8,7 @@
 import UIKit
 import SafariServices
 
-protocol NewsViewControllerProtocol: AnyObject {
+public protocol NewsViewControllerProtocol: AnyObject {
     var presenter: NewsViewPresenterProtocol? { get set }
     func didUpdateNewsAnimated(newsCount: Int, batchAmount: Int)
     func showActivityIndicator()

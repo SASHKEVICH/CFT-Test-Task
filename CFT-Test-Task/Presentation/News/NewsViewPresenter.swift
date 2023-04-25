@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol NewsViewPresenterTableViewHelperProtocol: AnyObject {
+public protocol NewsViewPresenterTableViewHelperProtocol: AnyObject {
     var news: [News] { get set }
     func didTapNewsCell(at indexPath: IndexPath)
     func requestFetchNewsNextPageIfLastCell(at indexPath: IndexPath)
     func didTapGreetingsButton()
 }
 
-protocol NewsViewPresenterProtocol {
+public protocol NewsViewPresenterProtocol {
     var view: NewsViewControllerProtocol? { get set }
     var tableViewHelper: NewsTableViewHelperProtocol { get set }
     func requestNews()

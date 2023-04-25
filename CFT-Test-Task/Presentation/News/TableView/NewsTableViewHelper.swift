@@ -11,7 +11,7 @@ protocol NewsTableViewHeaderViewDelegate: AnyObject {
     func didTapGreetingsButton()
 }
 
-protocol NewsTableViewHelperProtocol: UITableViewDelegate, UITableViewDataSource {
+public protocol NewsTableViewHelperProtocol: UITableViewDelegate, UITableViewDataSource {
     var presenter: NewsViewPresenterTableViewHelperProtocol? { get set }
 }
 

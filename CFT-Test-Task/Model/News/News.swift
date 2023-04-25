@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct News: Decodable {
+public struct News: Decodable {
     struct Source: Decodable {
         let id: String?
         let name: String?
