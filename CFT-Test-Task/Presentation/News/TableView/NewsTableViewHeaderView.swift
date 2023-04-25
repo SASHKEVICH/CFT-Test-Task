@@ -26,6 +26,7 @@ final class NewsTableViewHeaderView: UITableViewHeaderFooterView {
     }
 }
 
+// MARK: - Setup Greeting button
 private extension NewsTableViewHeaderView {
     func setupGreetingsButton() {
         contentView.addSubview(greetingsButton)

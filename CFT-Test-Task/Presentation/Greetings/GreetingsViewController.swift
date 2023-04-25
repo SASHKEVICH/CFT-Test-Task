@@ -22,15 +22,17 @@ final class GreetingsViewController: UIViewController, GreetingsViewControllerPr
         view.backgroundColor = .white
         
         setupGreetingsLabel()
-        
         presenter?.viewDidLoad()
     }
-    
+}
+
+extension GreetingsViewController {
     func didRecieveGreetings(text: String) {
         greetingsLabel.text = "Здравствуйте, \(text)!"
     }
 }
 
+// MARK: - Private methods
 private extension GreetingsViewController {
     func setupGreetingsLabel() {
         view.addSubview(greetingsLabel)

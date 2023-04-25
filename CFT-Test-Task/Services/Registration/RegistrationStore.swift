@@ -33,7 +33,7 @@ struct RegistrationStore {
     private let userKey = "userKey"
 }
 
-// MARK: - Working with user
+// MARK: - RegistrationStoreUserProtocol
 extension RegistrationStore: RegistrationStoreUserProtocol {
     func store(user: User) {
         guard let data = try? JSONEncoder().encode(user) else {
@@ -54,7 +54,7 @@ extension RegistrationStore: RegistrationStoreUserProtocol {
     }
 }
 
-// MARK: - Working with password
+// MARK: - RegistrationStorePasswordProtocol
 extension RegistrationStore: RegistrationStorePasswordProtocol {
     func store(password: String, for user: User) {
         let userCredentials = user.name + user.surname
@@ -79,7 +79,7 @@ extension RegistrationStore: RegistrationStorePasswordProtocol {
     }
 }
 
-// MARK: - Removing info from user defaults and keychain
+// MARK: - RegistrationStoreAllRemoveProtocol
 extension RegistrationStore: RegistrationStoreAllRemoveProtocol {
     func removeAll() {
         do {

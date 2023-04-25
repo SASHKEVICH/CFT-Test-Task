@@ -31,10 +31,13 @@ final class DateRegistrationViewPresenter: DateRegistrationViewPresenterProtocol
         registrationService: RegistrationServiceProtocol
     ) {
         self.registrationService = registrationService
-        setupDatePickerDelegate(datePickerDelegate)
+        self.datePickerDelegate = datePickerDelegate
+        
+        datePickerDelegate.presenter = self
     }
 }
 
+// MARK: - DateRegistrationViewPresenterDatePickerProtocol
 extension DateRegistrationViewPresenter: DateRegistrationViewPresenterDatePickerProtocol {
     func didChooseBirthdate(_ birthdate: Date) {
         validate(birthdate: birthdate)
@@ -46,12 +49,7 @@ extension DateRegistrationViewPresenter: DateRegistrationViewPresenterDatePicker
     }
 }
 
-private extension DateRegistrationViewPresenter {
-    func setupDatePickerDelegate(_ datePickerDelegate: BirthdateViewDatePickerDelegateProtocol) {
-        self.datePickerDelegate = datePickerDelegate
-        datePickerDelegate.presenter = self
-    }
-    
+private extension DateRegistrationViewPresenter {    
     func validate(birthdate: Date) {
         let currentDate = Date()
         guard birthdate <= currentDate else {

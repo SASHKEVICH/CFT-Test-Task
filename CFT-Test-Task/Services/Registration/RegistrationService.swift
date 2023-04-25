@@ -27,7 +27,7 @@ public typealias RegistrationServiceFullProtocol =
     & RegistrationServiceCredentialsProtocol
     & RegistrationServiceProtocol
 
-final class RegistrationService: RegistrationServiceFullProtocol {
+final class RegistrationService {
     private var user: User = User(name: "", surname: "", birthdate: Date())
     private let registrationStore: RegistrationStoreProtocol
     
@@ -42,8 +42,8 @@ final class RegistrationService: RegistrationServiceFullProtocol {
     }
 }
 
-// MARK: - Registration
-extension RegistrationService {
+// MARK: - RegistrationServiceProtocol
+extension RegistrationService: RegistrationServiceProtocol {
     func register(name: String, surname: String) {
         let newUser = User(
             name: name,
@@ -67,14 +67,17 @@ extension RegistrationService {
     func confirmRegistration(with password: String) {
         registrationStore.store(password: password, for: user)
     }
-    
+}
+
+// MARK: - RegistrationServiceAllRemoveProtocol
+extension RegistrationService: RegistrationServiceAllRemoveProtocol {
     func removeAll() {
         registrationStore.removeAll()
     }
 }
 
-// MARK: - Getting user's info
-extension RegistrationService {
+// MARK: - RegistrationServiceCredentialsProtocol
+extension RegistrationService: RegistrationServiceCredentialsProtocol {
     var userCredentials: String? {
         guard let user = registrationStore.getUser() else { return nil }
         let userCredentials = user.name + " " + user.surname

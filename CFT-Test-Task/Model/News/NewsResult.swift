@@ -10,11 +10,11 @@ import Foundation
 public struct NewsResult: Decodable {
     public let news: [News]
     
-    enum CodingKeys: String, CodingKey {
-        case news = "articles"
-    }
-    
     public init(news: [News]) {
         self.news = news
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case news = "articles"
     }
 }

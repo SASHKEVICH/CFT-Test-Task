@@ -30,18 +30,6 @@ final class NewsViewPresenter: NewsViewPresenterProtocol {
     
     var news: [News] = []
     
-    func requestNews() {
-        view?.showActivityIndicator()
-        
-        newsService.fetchNewsNextPage { [weak self] result in
-            self?.handleFetchingNews(result: result)
-        }
-    }
-    
-    func didTapLogoutButton() {
-        registrationService.removeAll()
-    }
-    
     init(
         tableViewHelper: NewsTableViewHelperProtocol,
         newsService: NewsServiceProtocol,
@@ -52,6 +40,21 @@ final class NewsViewPresenter: NewsViewPresenterProtocol {
         self.registrationService = registrationService
         
         tableViewHelper.presenter = self
+    }
+}
+
+// MARK: - NewsViewPresenterProtocol
+extension NewsViewPresenter {
+    func requestNews() {
+        view?.showActivityIndicator()
+        
+        newsService.fetchNewsNextPage { [weak self] result in
+            self?.handleFetchingNews(result: result)
+        }
+    }
+    
+    func didTapLogoutButton() {
+        registrationService.removeAll()
     }
 }
 

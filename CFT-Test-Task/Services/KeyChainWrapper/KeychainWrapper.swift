@@ -16,6 +16,14 @@ enum KeychainWrapperError: Error {
 }
 
 struct KeychainWrapper {
+    private func error(from status: OSStatus) -> KeychainWrapperError {
+        let message = SecCopyErrorMessageString(status, nil) as String? ?? NSLocalizedString("Unhandled Error", comment: "")
+        return KeychainWrapperError.unhandledError(message: message)
+    }
+}
+
+// MARK: Storing password
+extension KeychainWrapper {
     func store(password: String, for attribute: String) throws {
         guard let encodedPassword = password.data(using: .utf8) else {
             throw KeychainWrapperError.passwordConversionError
@@ -50,7 +58,10 @@ struct KeychainWrapper {
             throw error(from: status)
         }
     }
-    
+}
+
+// MARK: - Getting password
+extension KeychainWrapper {
     func getPassword(for attribute: String) throws -> String? {
         let getQuery: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
                                        kSecMatchLimit as String: kSecMatchLimitOne,
@@ -78,7 +89,10 @@ struct KeychainWrapper {
             throw error(from: status)
         }
     }
-    
+}
+
+// MARK: - Removing password from keychain
+extension KeychainWrapper {
     func removeAll() throws {
         let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword]
         
@@ -86,10 +100,5 @@ struct KeychainWrapper {
         guard status == errSecSuccess || status == errSecItemNotFound else {
             throw error(from: status)
         }
-    }
-    
-    private func error(from status: OSStatus) -> KeychainWrapperError {
-        let message = SecCopyErrorMessageString(status, nil) as String? ?? NSLocalizedString("Unhandled Error", comment: "")
-        return KeychainWrapperError.unhandledError(message: message)
     }
 }

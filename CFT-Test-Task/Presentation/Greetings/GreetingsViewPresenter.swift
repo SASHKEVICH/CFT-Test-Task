@@ -17,12 +17,14 @@ final class GreetingsViewPresenter: GreetingsViewPresenterProtocol {
     
     weak var view: GreetingsViewControllerProtocol?
     
+    init(registrationService: RegistrationServiceCredentialsProtocol) {
+        self.registrationService = registrationService
+    }
+}
+
+extension GreetingsViewPresenter {
     func viewDidLoad() {
         guard let credentials = registrationService.userCredentials else { return }
         view?.didRecieveGreetings(text: credentials)
-    }
-    
-    init(registrationService: RegistrationServiceCredentialsProtocol) {
-        self.registrationService = registrationService
     }
 }

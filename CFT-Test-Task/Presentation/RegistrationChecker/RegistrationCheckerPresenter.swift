@@ -24,6 +24,7 @@ final class RegistrationCheckerPresenter: RegistrationCheckerPresenterProtocol {
     }
 }
 
+// MARK: - RegistrationCheckerPresenterProtocol
 extension RegistrationCheckerPresenter {
     func viewDidAppear() {
         if registrationService.isThereAUserInStore {
