@@ -16,7 +16,9 @@ final class RegistrationStoreMock: RegistrationStoreProtocol {
     
     var password = ""
     
-    func removeAll() {}
+    func removeAll() {
+        self.user = nil
+    }
     
     func store(password: String, for user: User) {
         self.password = password
