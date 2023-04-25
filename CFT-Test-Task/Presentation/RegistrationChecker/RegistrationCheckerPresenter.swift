@@ -17,9 +17,9 @@ protocol RegistrationCheckerPresenterProtocol {
 final class RegistrationCheckerPresenter: RegistrationCheckerPresenterProtocol {
     weak var view: RegistrationCheckerViewControllerProtocol?
     
-    private var registrationService: RegistrationServiceProtocol
+    private var registrationService: RegistrationServiceCredentialsProtocol
     
-    init(registrationService: RegistrationServiceProtocol) {
+    init(registrationService: RegistrationServiceCredentialsProtocol) {
         self.registrationService = registrationService
     }
 }

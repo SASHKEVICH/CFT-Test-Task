@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol GreetingsViewPresenterProtocol {
+public protocol GreetingsViewPresenterProtocol {
     var view: GreetingsViewControllerProtocol? { get set }
     func viewDidLoad()
 }
 
 final class GreetingsViewPresenter: GreetingsViewPresenterProtocol {
-    private let registrationService: RegistrationServiceProtocol
+    private let registrationService: RegistrationServiceCredentialsProtocol
     
     weak var view: GreetingsViewControllerProtocol?
     
@@ -22,7 +22,7 @@ final class GreetingsViewPresenter: GreetingsViewPresenterProtocol {
         view?.didRecieveGreetings(text: credentials)
     }
     
-    init(registrationService: RegistrationServiceProtocol) {
+    init(registrationService: RegistrationServiceCredentialsProtocol) {
         self.registrationService = registrationService
     }
 }

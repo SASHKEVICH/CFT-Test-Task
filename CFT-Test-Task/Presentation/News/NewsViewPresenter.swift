@@ -23,7 +23,7 @@ protocol NewsViewPresenterProtocol {
 
 final class NewsViewPresenter: NewsViewPresenterProtocol {
     private var newsService: NewsServiceProtocol
-    private var registrationService: RegistrationServiceProtocol
+    private var registrationService: RegistrationServiceAllRemoveProtocol
     
     weak var view: NewsViewControllerProtocol?
     var tableViewHelper: NewsTableViewHelperProtocol
@@ -45,7 +45,7 @@ final class NewsViewPresenter: NewsViewPresenterProtocol {
     init(
         tableViewHelper: NewsTableViewHelperProtocol,
         newsService: NewsServiceProtocol,
-        registrationService: RegistrationServiceProtocol
+        registrationService: RegistrationServiceAllRemoveProtocol
     ) {
         self.tableViewHelper = tableViewHelper
         self.newsService = newsService

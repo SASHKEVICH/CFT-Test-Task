@@ -7,20 +7,39 @@
 
 import Foundation
 
-protocol RegistrationServiceProtocol {
-    var isThereAUserInStore: Bool { get }
-    var userCredentials: String? { get }
-    func register(name: String, surname: String)
-    func register(birthdate: Date)
-    func confirmRegistration(with password: String)
+public protocol RegistrationServiceAllRemoveProtocol {
     func removeAll()
 }
 
-final class RegistrationService: RegistrationServiceProtocol {
+public protocol RegistrationServiceCredentialsProtocol {
+    var isThereAUserInStore: Bool { get }
+    var userCredentials: String? { get }
+}
+
+public protocol RegistrationServiceProtocol {
+    func register(name: String, surname: String)
+    func register(birthdate: Date)
+    func confirmRegistration(with password: String)
+}
+
+public typealias RegistrationServiceFullProtocol =
+    RegistrationServiceAllRemoveProtocol
+    & RegistrationServiceCredentialsProtocol
+    & RegistrationServiceProtocol
+
+final class RegistrationService: RegistrationServiceFullProtocol {
     private var user: User = User(name: "", surname: "", birthdate: Date())
-    private let registrationStore = RegistrationStore()
+    private let registrationStore: RegistrationStoreProtocol
     
-    static let shared: RegistrationServiceProtocol = RegistrationService()
+    static let shared: RegistrationServiceFullProtocol = RegistrationService()
+    
+    init(registrationStore: RegistrationStoreProtocol) {
+        self.registrationStore = registrationStore
+    }
+    
+    init() {
+        self.registrationStore = RegistrationStore()
+    }
 }
 
 // MARK: - Registration

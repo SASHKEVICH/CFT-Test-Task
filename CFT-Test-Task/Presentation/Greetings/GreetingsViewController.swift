@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol GreetingsViewControllerProtocol: AnyObject {
+public protocol GreetingsViewControllerProtocol: AnyObject {
     var presenter: GreetingsViewPresenterProtocol? { get set }
     func didRecieveGreetings(text: String)
 }
