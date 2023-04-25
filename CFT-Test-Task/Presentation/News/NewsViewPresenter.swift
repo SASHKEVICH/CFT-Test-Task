@@ -43,6 +43,7 @@ final class NewsViewPresenter: NewsViewPresenterProtocol {
     }
 }
 
+// MARK: - NewsViewPresenterTableViewHelperProtocol
 extension NewsViewPresenter: NewsViewPresenterTableViewHelperProtocol {
     func didTapNewsCell(_ cell: NewsTableViewCell) {
         print("tap cell")
@@ -56,12 +57,15 @@ extension NewsViewPresenter: NewsViewPresenterTableViewHelperProtocol {
     }
 }
 
+// MARK: - Private methods
 private extension NewsViewPresenter {
     func handleFetchingNews(result: Result<NewsResult, Error>) {
         switch result {
         case .success(let newsResult):
-            self.news += newsResult.articles
-            view?.didUpdateNewsAnimated(newsCount: news.count)
+            self.news += newsResult.news
+            view?.didUpdateNewsAnimated(
+                newsCount: news.count,
+                batchAmount: newsResult.news.count)
             view?.hideActivityIndicator()
         case .failure(let error):
             print(error)

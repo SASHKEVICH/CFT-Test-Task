@@ -8,5 +8,9 @@
 import Foundation
 
 struct NewsResult: Decodable {
-    let articles: [News]
+    let news: [News]
+    
+    enum CodingKeys: String, CodingKey {
+        case news = "articles"
+    }
 }

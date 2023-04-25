@@ -9,7 +9,7 @@ import UIKit
 
 protocol NewsViewControllerProtocol: AnyObject {
     var presenter: NewsViewPresenterProtocol? { get set }
-    func didUpdateNewsAnimated(newsCount: Int)
+    func didUpdateNewsAnimated(newsCount: Int, batchAmount: Int)
     func showActivityIndicator()
     func hideActivityIndicator()
 }
@@ -32,10 +32,10 @@ final class NewsViewController: UIViewController, NewsViewControllerProtocol {
     }
 }
 
+// MARK: - NewsViewControllerProtocol
 extension NewsViewController {
-    func didUpdateNewsAnimated(newsCount: Int) {
+    func didUpdateNewsAnimated(newsCount: Int, batchAmount: Int) {
         newsTableView.performBatchUpdates { [weak self] in
-            let batchAmount = 10
             let newsIndexPaths = (newsCount - batchAmount..<newsCount).map { IndexPath(row: $0, section: 0) }
             self?.newsTableView.insertRows(at: newsIndexPaths, with: .automatic)
         } completion: { _ in }
@@ -50,6 +50,7 @@ extension NewsViewController {
     }
 }
 
+// MARK: - Setup News table view
 private extension NewsViewController {
     func setupNewsTableView() {
         view.addSubview(newsTableView)
@@ -72,6 +73,7 @@ private extension NewsViewController {
     }
 }
 
+// MARK: - Setup Activitity indicator view
 private extension NewsViewController {
     func setupActivityIndicatorView() {
         view.addSubview(activityIndicatorView)
