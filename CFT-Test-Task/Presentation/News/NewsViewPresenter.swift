@@ -9,7 +9,7 @@ import Foundation
 
 protocol NewsViewPresenterTableViewHelperProtocol: AnyObject {
     var news: [News] { get set }
-    func didTapNewsCell(_ cell: NewsTableViewCell)
+    func didTapNewsCell(at indexPath: IndexPath)
     func requestFetchNewsNextPageIfLastCell(at indexPath: IndexPath)
 }
 
@@ -45,8 +45,9 @@ final class NewsViewPresenter: NewsViewPresenterProtocol {
 
 // MARK: - NewsViewPresenterTableViewHelperProtocol
 extension NewsViewPresenter: NewsViewPresenterTableViewHelperProtocol {
-    func didTapNewsCell(_ cell: NewsTableViewCell) {
-        print("tap cell")
+    func didTapNewsCell(at indexPath: IndexPath) {
+        let selectedNews = news[indexPath.row]
+        view?.showNewsInSafari(with: selectedNews.url)
     }
     
     func requestFetchNewsNextPageIfLastCell(at indexPath: IndexPath) {

@@ -31,6 +31,7 @@ final class NewsTableViewHelper: NSObject, NewsTableViewHelperProtocol {
         didSelectRowAt indexPath: IndexPath
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
+        presenter?.didTapNewsCell(at: indexPath)
     }
     
     func tableView(

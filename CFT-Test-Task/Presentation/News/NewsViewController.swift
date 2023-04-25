@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol NewsViewControllerProtocol: AnyObject {
     var presenter: NewsViewPresenterProtocol? { get set }
     func didUpdateNewsAnimated(newsCount: Int, batchAmount: Int)
     func showActivityIndicator()
     func hideActivityIndicator()
+    func showNewsInSafari(with url: URL)
 }
 
 final class NewsViewController: UIViewController, NewsViewControllerProtocol {
@@ -47,6 +49,12 @@ extension NewsViewController {
     
     func hideActivityIndicator() {
         activityIndicatorView.stopAnimating()
+    }
+    
+    func showNewsInSafari(with url: URL) {
+        let vc = SFSafariViewController(url: url)
+        vc.modalPresentationStyle = .formSheet
+        present(vc, animated: true)
     }
 }
 
