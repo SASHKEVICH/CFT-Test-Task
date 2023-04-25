@@ -27,7 +27,7 @@ final class GreetingsViewController: UIViewController, GreetingsViewControllerPr
     }
     
     func didRecieveGreetings(text: String) {
-        greetingsLabel.text = "Здравствуйте, " + text + "!"
+        greetingsLabel.text = "Здравствуйте, \(text)!"
     }
 }
 
