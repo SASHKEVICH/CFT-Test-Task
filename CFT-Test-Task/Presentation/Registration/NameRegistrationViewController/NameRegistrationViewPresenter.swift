@@ -42,6 +42,7 @@ final class NameRegistrationViewPresenter: NameRegistrationViewPresenterProtocol
     }
 }
 
+// MARK: - NameRegistrationViewPresenterProtocol
 extension NameRegistrationViewPresenter {
     func didChangeNameTextField(text: String?) {
         guard let view = view, let name = text, name.count != 0 else {

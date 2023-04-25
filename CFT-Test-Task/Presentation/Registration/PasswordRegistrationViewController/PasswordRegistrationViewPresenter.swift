@@ -40,6 +40,7 @@ final class PasswordRegistrationViewPresenter: PasswordRegistrationViewPresenter
     }
 }
 
+// MARK: - PasswordRegistrationViewPresenterProtocol
 extension PasswordRegistrationViewPresenter {
     func didChangePasswordTextField(text: String?) {
         guard let view = view, let password = text, password.count != 0 else {

@@ -11,14 +11,16 @@ protocol NewsTableViewHeaderViewDelegate: AnyObject {
     func didTapGreetingsButton()
 }
 
-protocol NewsTableViewHelperProtocol: UITableViewDelegate, UITableViewDataSource {
+public protocol NewsTableViewHelperProtocol: UITableViewDelegate, UITableViewDataSource {
     var presenter: NewsViewPresenterTableViewHelperProtocol? { get set }
 }
 
 final class NewsTableViewHelper: NSObject, NewsTableViewHelperProtocol {
     weak var presenter: NewsViewPresenterTableViewHelperProtocol?
-    
-    // MARK: - UITableViewDelegate
+}
+
+// MARK: - UITableViewDelegate
+extension NewsTableViewHelper {
     func tableView(
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
@@ -73,8 +75,10 @@ final class NewsTableViewHelper: NSObject, NewsTableViewHelperProtocol {
             presenter?.requestFetchNewsNextPageIfLastCell(at: indexPath)
         }
     }
-    
-    // MARK: - UITableViewDataSource
+}
+
+// MARK: - UITableViewDataSource
+extension NewsTableViewHelper {
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int

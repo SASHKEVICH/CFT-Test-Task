@@ -126,13 +126,14 @@ private extension DateRegistrationViewController {
         
         continueRegistrationButton.title = "Продолжить"
         continueRegistrationButton.buttonState = .disabled
-        continueRegistrationButton.addTarget(self, action: #selector(didTapConfirmRegistrationButton), for: .touchUpInside)
+        continueRegistrationButton.addTarget(self, action: #selector(didTapContinueRegistrationButton), for: .touchUpInside)
     }
 }
 
+// MARK: - Continue registration button callback
 private extension DateRegistrationViewController {
     @objc
-    func didTapConfirmRegistrationButton() {
+    func didTapContinueRegistrationButton() {
         presenter?.didTapContinueRegistrationButton()
         
         let textFieldHelper = RegistrationTextFieldHelper()

@@ -26,7 +26,7 @@
 		9661851829F12AAC0003C57A /* NameRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661851729F12AAC0003C57A /* NameRegistrationViewController.swift */; };
 		9661851D29F12AAD0003C57A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9661851C29F12AAD0003C57A /* Assets.xcassets */; };
 		9661852029F12AAD0003C57A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9661851E29F12AAD0003C57A /* LaunchScreen.storyboard */; };
-		9661852B29F12AAD0003C57A /* CFT_Test_TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661852A29F12AAD0003C57A /* CFT_Test_TaskTests.swift */; };
+		9661852B29F12AAD0003C57A /* GreetingsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661852A29F12AAD0003C57A /* GreetingsViewTests.swift */; };
 		9661854A29F138350003C57A /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661854929F138350003C57A /* UIColor+Extensions.swift */; };
 		9661854E29F13E3F0003C57A /* ShiftCustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661854D29F13E3F0003C57A /* ShiftCustomTextField.swift */; };
 		9661855129F14EA20003C57A /* ShiftBirthdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661855029F14EA20003C57A /* ShiftBirthdateView.swift */; };
@@ -48,6 +48,15 @@
 		96FD00D629F50BFE0049BCCE /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00D529F50BFE0049BCCE /* KeychainWrapper.swift */; };
 		96FD00DB29F5264D0049BCCE /* RegistrationCheckerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00DA29F5264D0049BCCE /* RegistrationCheckerViewController.swift */; };
 		96FD00DD29F528670049BCCE /* RegistrationCheckerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD00DC29F528670049BCCE /* RegistrationCheckerPresenter.swift */; };
+		96FD1EFD29F7D5110079073F /* GreetingsViewPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD1EFC29F7D5110079073F /* GreetingsViewPresenterSpy.swift */; };
+		96FD1F0029F7D5C00079073F /* RegistrationStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD1EFF29F7D5C00079073F /* RegistrationStoreMock.swift */; };
+		96FD1F0229F7DBB10079073F /* GreetingsViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD1F0129F7DBB10079073F /* GreetingsViewControllerSpy.swift */; };
+		96FD1F0529F7DF510079073F /* RegistrationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD1F0429F7DF510079073F /* RegistrationServiceTests.swift */; };
+		96FD1F0729F7E1770079073F /* RegistrationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD1F0629F7E1770079073F /* RegistrationServiceMock.swift */; };
+		96FD1F0B29F7E7A70079073F /* NewsServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD1F0A29F7E7A70079073F /* NewsServiceMock.swift */; };
+		96FD1F0D29F7E8310079073F /* NewsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD1F0C29F7E8310079073F /* NewsViewTests.swift */; };
+		96FD1F0F29F7E83C0079073F /* NewsViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD1F0E29F7E83C0079073F /* NewsViewControllerSpy.swift */; };
+		96FD1F1129F7E8440079073F /* NewsViewPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD1F1029F7E8440079073F /* NewsViewPresenterSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +92,7 @@
 		9661851F29F12AAD0003C57A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9661852129F12AAD0003C57A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9661852629F12AAD0003C57A /* CFT-Test-TaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CFT-Test-TaskTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9661852A29F12AAD0003C57A /* CFT_Test_TaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFT_Test_TaskTests.swift; sourceTree = "<group>"; };
+		9661852A29F12AAD0003C57A /* GreetingsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsViewTests.swift; sourceTree = "<group>"; };
 		9661854929F138350003C57A /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		9661854D29F13E3F0003C57A /* ShiftCustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCustomTextField.swift; sourceTree = "<group>"; };
 		9661855029F14EA20003C57A /* ShiftBirthdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftBirthdateView.swift; sourceTree = "<group>"; };
@@ -105,6 +114,15 @@
 		96FD00D529F50BFE0049BCCE /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		96FD00DA29F5264D0049BCCE /* RegistrationCheckerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCheckerViewController.swift; sourceTree = "<group>"; };
 		96FD00DC29F528670049BCCE /* RegistrationCheckerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCheckerPresenter.swift; sourceTree = "<group>"; };
+		96FD1EFC29F7D5110079073F /* GreetingsViewPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsViewPresenterSpy.swift; sourceTree = "<group>"; };
+		96FD1EFF29F7D5C00079073F /* RegistrationStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStoreMock.swift; sourceTree = "<group>"; };
+		96FD1F0129F7DBB10079073F /* GreetingsViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsViewControllerSpy.swift; sourceTree = "<group>"; };
+		96FD1F0429F7DF510079073F /* RegistrationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationServiceTests.swift; sourceTree = "<group>"; };
+		96FD1F0629F7E1770079073F /* RegistrationServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationServiceMock.swift; sourceTree = "<group>"; };
+		96FD1F0A29F7E7A70079073F /* NewsServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsServiceMock.swift; sourceTree = "<group>"; };
+		96FD1F0C29F7E8310079073F /* NewsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewTests.swift; sourceTree = "<group>"; };
+		96FD1F0E29F7E83C0079073F /* NewsViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewControllerSpy.swift; sourceTree = "<group>"; };
+		96FD1F1029F7E8440079073F /* NewsViewPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewPresenterSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,7 +233,10 @@
 		9661852929F12AAD0003C57A /* CFT-Test-TaskTests */ = {
 			isa = PBXGroup;
 			children = (
-				9661852A29F12AAD0003C57A /* CFT_Test_TaskTests.swift */,
+				96FD1F0329F7DF3F0079073F /* RegistrationServiceTests */,
+				96FD1EFE29F7D5B40079073F /* Core */,
+				96FD1EFB29F7D3F50079073F /* NewsViewControllerTests */,
+				96FD1EFA29F7D3E70079073F /* GreetingsViewControllerTests */,
 			);
 			path = "CFT-Test-TaskTests";
 			sourceTree = "<group>";
@@ -375,6 +396,60 @@
 			path = RegistrationChecker;
 			sourceTree = "<group>";
 		};
+		96FD1EFA29F7D3E70079073F /* GreetingsViewControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				9661852A29F12AAD0003C57A /* GreetingsViewTests.swift */,
+				96FD1EFC29F7D5110079073F /* GreetingsViewPresenterSpy.swift */,
+				96FD1F0129F7DBB10079073F /* GreetingsViewControllerSpy.swift */,
+			);
+			path = GreetingsViewControllerTests;
+			sourceTree = "<group>";
+		};
+		96FD1EFB29F7D3F50079073F /* NewsViewControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				96FD1F0C29F7E8310079073F /* NewsViewTests.swift */,
+				96FD1F0E29F7E83C0079073F /* NewsViewControllerSpy.swift */,
+				96FD1F1029F7E8440079073F /* NewsViewPresenterSpy.swift */,
+			);
+			path = NewsViewControllerTests;
+			sourceTree = "<group>";
+		};
+		96FD1EFE29F7D5B40079073F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				96FD1F0929F7E79D0079073F /* News */,
+				96FD1F0829F7E7960079073F /* Registration */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		96FD1F0329F7DF3F0079073F /* RegistrationServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				96FD1F0429F7DF510079073F /* RegistrationServiceTests.swift */,
+			);
+			path = RegistrationServiceTests;
+			sourceTree = "<group>";
+		};
+		96FD1F0829F7E7960079073F /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				96FD1EFF29F7D5C00079073F /* RegistrationStoreMock.swift */,
+				96FD1F0629F7E1770079073F /* RegistrationServiceMock.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		96FD1F0929F7E79D0079073F /* News */ = {
+			isa = PBXGroup;
+			children = (
+				96FD1F0A29F7E7A70079073F /* NewsServiceMock.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -520,7 +595,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9661852B29F12AAD0003C57A /* CFT_Test_TaskTests.swift in Sources */,
+				96FD1F0229F7DBB10079073F /* GreetingsViewControllerSpy.swift in Sources */,
+				96FD1F0D29F7E8310079073F /* NewsViewTests.swift in Sources */,
+				9661852B29F12AAD0003C57A /* GreetingsViewTests.swift in Sources */,
+				96FD1F0529F7DF510079073F /* RegistrationServiceTests.swift in Sources */,
+				96FD1F0B29F7E7A70079073F /* NewsServiceMock.swift in Sources */,
+				96FD1F0029F7D5C00079073F /* RegistrationStoreMock.swift in Sources */,
+				96FD1F0729F7E1770079073F /* RegistrationServiceMock.swift in Sources */,
+				96FD1EFD29F7D5110079073F /* GreetingsViewPresenterSpy.swift in Sources */,
+				96FD1F0F29F7E83C0079073F /* NewsViewControllerSpy.swift in Sources */,
+				96FD1F1129F7E8440079073F /* NewsViewPresenterSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

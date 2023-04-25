@@ -46,7 +46,7 @@ private extension ShiftCustomButton {
     
     func setNormalState() {
         self.isEnabled = true
-        layer.backgroundColor = UIColor.shiftRed?.cgColor
+        layer.backgroundColor = UIColor.shiftRed.cgColor
         
         setAttributedButtonTitle()
         setTitleColor(.white, for: .normal)

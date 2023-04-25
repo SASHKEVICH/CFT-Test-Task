@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol NewsViewPresenterTableViewHelperProtocol: AnyObject {
+public protocol NewsViewPresenterTableViewHelperProtocol: AnyObject {
     var news: [News] { get set }
     func didTapNewsCell(at indexPath: IndexPath)
     func requestFetchNewsNextPageIfLastCell(at indexPath: IndexPath)
     func didTapGreetingsButton()
 }
 
-protocol NewsViewPresenterProtocol {
+public protocol NewsViewPresenterProtocol {
     var view: NewsViewControllerProtocol? { get set }
     var tableViewHelper: NewsTableViewHelperProtocol { get set }
     func requestNews()
@@ -23,13 +23,28 @@ protocol NewsViewPresenterProtocol {
 
 final class NewsViewPresenter: NewsViewPresenterProtocol {
     private var newsService: NewsServiceProtocol
-    private var registrationService: RegistrationServiceProtocol
+    private var registrationService: RegistrationServiceAllRemoveProtocol
     
     weak var view: NewsViewControllerProtocol?
     var tableViewHelper: NewsTableViewHelperProtocol
     
     var news: [News] = []
     
+    init(
+        tableViewHelper: NewsTableViewHelperProtocol,
+        newsService: NewsServiceProtocol,
+        registrationService: RegistrationServiceAllRemoveProtocol
+    ) {
+        self.tableViewHelper = tableViewHelper
+        self.newsService = newsService
+        self.registrationService = registrationService
+        
+        tableViewHelper.presenter = self
+    }
+}
+
+// MARK: - NewsViewPresenterProtocol
+extension NewsViewPresenter {
     func requestNews() {
         view?.showActivityIndicator()
         
@@ -40,18 +55,6 @@ final class NewsViewPresenter: NewsViewPresenterProtocol {
     
     func didTapLogoutButton() {
         registrationService.removeAll()
-    }
-    
-    init(
-        tableViewHelper: NewsTableViewHelperProtocol,
-        newsService: NewsServiceProtocol,
-        registrationService: RegistrationServiceProtocol
-    ) {
-        self.tableViewHelper = tableViewHelper
-        self.newsService = newsService
-        self.registrationService = registrationService
-        
-        tableViewHelper.presenter = self
     }
 }
 

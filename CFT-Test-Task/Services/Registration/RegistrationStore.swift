@@ -7,6 +7,25 @@
 
 import Foundation
 
+public protocol RegistrationStoreAllRemoveProtocol {
+    func removeAll()
+}
+
+public protocol RegistrationStoreUserProtocol {
+    func store(user: User)
+    func getUser() -> User?
+}
+
+public protocol RegistrationStorePasswordProtocol {
+    func store(password: String, for user: User)
+    func getPassword(for user: User) -> String?
+}
+
+public typealias RegistrationStoreProtocol =
+    RegistrationStoreAllRemoveProtocol
+    & RegistrationStoreUserProtocol
+    & RegistrationStorePasswordProtocol
+
 struct RegistrationStore {
     private let userDefaults = UserDefaults.standard
     private let keychainWrapper = KeychainWrapper()
@@ -14,8 +33,8 @@ struct RegistrationStore {
     private let userKey = "userKey"
 }
 
-// MARK: - Working with user
-extension RegistrationStore {
+// MARK: - RegistrationStoreUserProtocol
+extension RegistrationStore: RegistrationStoreUserProtocol {
     func store(user: User) {
         guard let data = try? JSONEncoder().encode(user) else {
             assertionFailure("cannot encode user")
@@ -33,14 +52,10 @@ extension RegistrationStore {
         
         return user
     }
-    
-    func removeUser() {
-        userDefaults.removeObject(forKey: userKey)
-    }
 }
 
-// MARK: - Working with password
-extension RegistrationStore {
+// MARK: - RegistrationStorePasswordProtocol
+extension RegistrationStore: RegistrationStorePasswordProtocol {
     func store(password: String, for user: User) {
         let userCredentials = user.name + user.surname
         
@@ -64,8 +79,8 @@ extension RegistrationStore {
     }
 }
 
-// MARK: - Removing info from user defaults and keychain
-extension RegistrationStore {
+// MARK: - RegistrationStoreAllRemoveProtocol
+extension RegistrationStore: RegistrationStoreAllRemoveProtocol {
     func removeAll() {
         do {
             try keychainWrapper.removeAll()
@@ -73,5 +88,9 @@ extension RegistrationStore {
         } catch {
             print(error)
         }
+    }
+    
+    private func removeUser() {
+        userDefaults.removeObject(forKey: userKey)
     }
 }

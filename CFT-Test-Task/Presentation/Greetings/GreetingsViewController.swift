@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol GreetingsViewControllerProtocol: AnyObject {
+public protocol GreetingsViewControllerProtocol: AnyObject {
     var presenter: GreetingsViewPresenterProtocol? { get set }
     func didRecieveGreetings(text: String)
 }
@@ -22,15 +22,17 @@ final class GreetingsViewController: UIViewController, GreetingsViewControllerPr
         view.backgroundColor = .white
         
         setupGreetingsLabel()
-        
         presenter?.viewDidLoad()
-    }
-    
-    func didRecieveGreetings(text: String) {
-        greetingsLabel.text = "Здравствуйте, " + text + "!"
     }
 }
 
+extension GreetingsViewController {
+    func didRecieveGreetings(text: String) {
+        greetingsLabel.text = "Здравствуйте, \(text)!"
+    }
+}
+
+// MARK: - Private methods
 private extension GreetingsViewController {
     func setupGreetingsLabel() {
         view.addSubview(greetingsLabel)

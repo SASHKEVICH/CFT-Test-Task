@@ -218,6 +218,7 @@ private extension PasswordRegistrationViewController {
     }
 }
 
+// MARK: - Password text fields callbacks
 private extension PasswordRegistrationViewController {
     @objc
     func didChangeTextField(_ textField: UITextField) {
@@ -234,6 +235,7 @@ private extension PasswordRegistrationViewController {
     }
 }
 
+// MARK: - Confirm Registration callback
 private extension PasswordRegistrationViewController {
     @objc
     func didTapConfirmRegistrationButton() {

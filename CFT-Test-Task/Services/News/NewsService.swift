@@ -11,7 +11,7 @@ enum NewsServiceError: Error {
     case fetchNewsStillRunning
 }
 
-protocol NewsServiceProtocol {
+public protocol NewsServiceProtocol {
     func fetchNewsNextPage(completion: @escaping (Result<NewsResult, Error>) -> Void)
 }
 

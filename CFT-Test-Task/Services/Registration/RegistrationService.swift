@@ -7,24 +7,43 @@
 
 import Foundation
 
-protocol RegistrationServiceProtocol {
-    var isThereAUserInStore: Bool { get }
-    var userCredentials: String? { get }
-    func register(name: String, surname: String)
-    func register(birthdate: Date)
-    func confirmRegistration(with password: String)
+public protocol RegistrationServiceAllRemoveProtocol {
     func removeAll()
 }
 
-final class RegistrationService: RegistrationServiceProtocol {
-    private var user: User = User(name: "", surname: "", birthdate: Date())
-    private let registrationStore = RegistrationStore()
-    
-    static let shared: RegistrationServiceProtocol = RegistrationService()
+public protocol RegistrationServiceCredentialsProtocol {
+    var isThereAUserInStore: Bool { get }
+    var userCredentials: String? { get }
 }
 
-// MARK: - Registration
-extension RegistrationService {
+public protocol RegistrationServiceProtocol {
+    func register(name: String, surname: String)
+    func register(birthdate: Date)
+    func confirmRegistration(with password: String)
+}
+
+public typealias RegistrationServiceFullProtocol =
+    RegistrationServiceAllRemoveProtocol
+    & RegistrationServiceCredentialsProtocol
+    & RegistrationServiceProtocol
+
+final class RegistrationService {
+    private var user: User = User(name: "", surname: "", birthdate: Date())
+    private let registrationStore: RegistrationStoreProtocol
+    
+    static let shared: RegistrationServiceFullProtocol = RegistrationService()
+    
+    init(registrationStore: RegistrationStoreProtocol) {
+        self.registrationStore = registrationStore
+    }
+    
+    init() {
+        self.registrationStore = RegistrationStore()
+    }
+}
+
+// MARK: - RegistrationServiceProtocol
+extension RegistrationService: RegistrationServiceProtocol {
     func register(name: String, surname: String) {
         let newUser = User(
             name: name,
@@ -48,14 +67,17 @@ extension RegistrationService {
     func confirmRegistration(with password: String) {
         registrationStore.store(password: password, for: user)
     }
-    
+}
+
+// MARK: - RegistrationServiceAllRemoveProtocol
+extension RegistrationService: RegistrationServiceAllRemoveProtocol {
     func removeAll() {
         registrationStore.removeAll()
     }
 }
 
-// MARK: - Getting user's info
-extension RegistrationService {
+// MARK: - RegistrationServiceCredentialsProtocol
+extension RegistrationService: RegistrationServiceCredentialsProtocol {
     var userCredentials: String? {
         guard let user = registrationStore.getUser() else { return nil }
         let userCredentials = user.name + " " + user.surname

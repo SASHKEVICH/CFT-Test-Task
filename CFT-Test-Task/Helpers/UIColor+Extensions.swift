@@ -8,19 +8,19 @@
 import UIKit
 
 extension UIColor {
-    static var shiftRed: UIColor? {
-        UIColor(named: "ShiftRed")
+    static var shiftRed: UIColor {
+        UIColor(named: "ShiftRed") ?? .red
     }
     
     static var shiftLightGray: UIColor? {
-        UIColor(named: "ShiftLightGray")
+        UIColor(named: "ShiftLightGray") ?? .black
     }
     
     static var shiftGray: UIColor? {
-        UIColor(named: "ShiftGray")
+        UIColor(named: "ShiftGray") ?? .red
     }
     
     static var shiftCellBackground: UIColor? {
-        UIColor(named: "ShiftCellBackground")
+        UIColor(named: "ShiftCellBackground") ?? .red
     }
 }
