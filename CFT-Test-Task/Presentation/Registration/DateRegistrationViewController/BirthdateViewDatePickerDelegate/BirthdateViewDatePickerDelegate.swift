@@ -8,12 +8,12 @@
 import UIKit
 
 protocol BirthdateViewDatePickerDelegateProtocol: AnyObject {
-    var presenter: DateRegistrationPresenterDatePickerProtocol? { get set }
+    var presenter: DateRegistrationViewPresenterDatePickerProtocol? { get set }
     func didChooseBirthdate(_ datePicker: UIDatePicker)
 }
 
 final class BirthdateViewDatePickerDelegate: BirthdateViewDatePickerDelegateProtocol {
-    weak var presenter: DateRegistrationPresenterDatePickerProtocol?
+    weak var presenter: DateRegistrationViewPresenterDatePickerProtocol?
     
     func didChooseBirthdate(_ datePicker: UIDatePicker) {
         presenter?.didChooseBirthdate(datePicker.date)

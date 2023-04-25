@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PasswordRegistrationViewControllerProtocol: AnyObject {
-    var presenter: PasswordRegistrationPresenterProtocol? { get set }
+    var presenter: PasswordRegistrationViewPresenterProtocol? { get set }
     func showPasswordErrorLabel()
     func hidePasswordErrorLabel()
     func showPasswordConfirmationErrorLabel()
@@ -29,7 +29,7 @@ final class PasswordRegistrationViewController: UIViewController, PasswordRegist
     
     private var passwordConfirmationTextFieldTopConstraint: NSLayoutConstraint?
     
-    var presenter: PasswordRegistrationPresenterProtocol?
+    var presenter: PasswordRegistrationViewPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -212,7 +212,7 @@ private extension PasswordRegistrationViewController {
             confirmRegistrationButton.heightAnchor.constraint(equalToConstant: viewsHeight)
         ])
         
-        confirmRegistrationButton.title = "Продолжить"
+        confirmRegistrationButton.title = "Зарегистрироваться"
         confirmRegistrationButton.buttonState = .disabled
         confirmRegistrationButton.addTarget(self, action: #selector(didTapConfirmRegistrationButton), for: .touchUpInside)
     }

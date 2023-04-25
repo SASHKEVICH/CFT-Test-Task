@@ -81,24 +81,47 @@ extension RegistrationCheckerViewController {
     }
     
     func switchToContestsViewController() {
+        guard let window = UIApplication.shared.windows.first else {
+            assertionFailure("cannot get window")
+            return
+        }
+        
         activityIndicatorView.stopAnimating()
-        print("switchToContestsViewController")
+        
+        let contestsViewController = getContestsViewController()
+        window.rootViewController = contestsViewController
+        window.makeKeyAndVisible()
     }
-    
-    private func getRegistrationViewController() -> UINavigationController {
-        let nameRegistrationViewController = NameRegistrationViewController()
-        let nameRegistrationPresenter = NameRegistrationPresenter(
-            textFieldHelper: RegistrationTextFieldHelper(),
-            registrationService: RegistrationService.shared)
+}
+
+private extension RegistrationCheckerViewController {
+    func getRegistrationViewController() -> UINavigationController {
+        guard let presenter = presenter else {
+            assertionFailure("presenter is nil")
+            return UINavigationController()
+        }
         
-        nameRegistrationPresenter.view = nameRegistrationViewController
-        nameRegistrationViewController.presenter = nameRegistrationPresenter
-        
+        let nameRegistrationViewController = presenter.getNameRegistrationViewController()
         let navigationController = UINavigationController(
             rootViewController: nameRegistrationViewController)
         
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.tintColor = .shiftRed
+        
+        return navigationController
+    }
+    
+    func getContestsViewController() -> UINavigationController {
+        guard let presenter = presenter else {
+            assertionFailure("presenter is nil")
+            return UINavigationController()
+        }
+        
+        let contestsViewController = presenter.getContestsViewController()
+        let navigationController = UINavigationController(
+            rootViewController: contestsViewController)
+        
+        navigationController.navigationBar.prefersLargeTitles = true
         
         return navigationController
     }

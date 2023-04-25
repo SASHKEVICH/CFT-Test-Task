@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DateRegistrationViewControllerProtocol: AnyObject {
-    var presenter: DateRegistrationPresenterProtocol? { get set }
+    var presenter: DateRegistrationViewPresenterProtocol? { get set }
     func showBirthdateErrorLabel()
     func hideBirthdateErrorLabel()
     func enableContinueRegistrationButton()
@@ -23,7 +23,7 @@ final class DateRegistrationViewController: UIViewController, DateRegistrationVi
     
     private let viewsHeight: CGFloat = 60
     
-    var presenter: DateRegistrationPresenterProtocol?
+    var presenter: DateRegistrationViewPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,7 +137,7 @@ private extension DateRegistrationViewController {
         
         let textFieldHelper = RegistrationTextFieldHelper()
         let passwordVC = PasswordRegistrationViewController()
-        let passwordPresenter = PasswordRegistrationPresenter(
+        let passwordPresenter = PasswordRegistrationViewPresenter(
             textFieldHelper: textFieldHelper,
             registrationService: RegistrationService.shared)
         

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NameRegistrationViewControllerProtocol: AnyObject {
-    var presenter: NameRegistrationPresenterProtocol? { get set }
+    var presenter: NameRegistrationViewPresenterProtocol? { get set }
     func showNameErrorLabel()
     func hideNameErrorLabel()
     func showSurnameErrorLabel()
@@ -28,7 +28,7 @@ final class NameRegistrationViewController: UIViewController, NameRegistrationVi
     
     private var surnameTextFieldTopConstraint: NSLayoutConstraint?
     
-    var presenter: NameRegistrationPresenterProtocol?
+    var presenter: NameRegistrationViewPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -221,7 +221,7 @@ private extension NameRegistrationViewController {
         let datePickerDelegate = BirthdateViewDatePickerDelegate()
         
         let dateRegistrationVC = DateRegistrationViewController()
-        let dateRegistrationPresenter = DateRegistrationPresenter(
+        let dateRegistrationPresenter = DateRegistrationViewPresenter(
             datePickerDelegate: datePickerDelegate,
             registrationService: RegistrationService.shared)
         

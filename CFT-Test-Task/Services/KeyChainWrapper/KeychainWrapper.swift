@@ -79,6 +79,15 @@ struct KeychainWrapper {
         }
     }
     
+    func removeAll() throws {
+        let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        guard status == errSecSuccess || status == errSecItemNotFound else {
+            throw error(from: status)
+        }
+    }
+    
     private func error(from status: OSStatus) -> KeychainWrapperError {
         let message = SecCopyErrorMessageString(status, nil) as String? ?? NSLocalizedString("Unhandled Error", comment: "")
         return KeychainWrapperError.unhandledError(message: message)

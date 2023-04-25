@@ -1,5 +1,5 @@
 //
-//  DateRegistrationPresenter.swift
+//  DateRegistrationViewPresenter.swift
 //  CFT-Test-Task
 //
 //  Created by Александр Бекренев on 22.04.2023.
@@ -7,18 +7,18 @@
 
 import Foundation
 
-protocol DateRegistrationPresenterDatePickerProtocol: AnyObject {
+protocol DateRegistrationViewPresenterDatePickerProtocol: AnyObject {
     func didChooseBirthdate(_ birthdate: Date)
 }
 
-protocol DateRegistrationPresenterProtocol {
+protocol DateRegistrationViewPresenterProtocol {
     var view: DateRegistrationViewControllerProtocol? { get set }
     var datePickerDelegate: BirthdateViewDatePickerDelegateProtocol? { get set }
     var chosenBirthdate: Date? { get }
     func didTapContinueRegistrationButton()
 }
 
-final class DateRegistrationPresenter: DateRegistrationPresenterProtocol {
+final class DateRegistrationViewPresenter: DateRegistrationViewPresenterProtocol {
     weak var view: DateRegistrationViewControllerProtocol?
     
     private let registrationService: RegistrationServiceProtocol
@@ -35,7 +35,7 @@ final class DateRegistrationPresenter: DateRegistrationPresenterProtocol {
     }
 }
 
-extension DateRegistrationPresenter: DateRegistrationPresenterDatePickerProtocol {
+extension DateRegistrationViewPresenter: DateRegistrationViewPresenterDatePickerProtocol {
     func didChooseBirthdate(_ birthdate: Date) {
         validate(birthdate: birthdate)
     }
@@ -46,7 +46,7 @@ extension DateRegistrationPresenter: DateRegistrationPresenterDatePickerProtocol
     }
 }
 
-private extension DateRegistrationPresenter {
+private extension DateRegistrationViewPresenter {
     func setupDatePickerDelegate(_ datePickerDelegate: BirthdateViewDatePickerDelegateProtocol) {
         self.datePickerDelegate = datePickerDelegate
         datePickerDelegate.presenter = self
