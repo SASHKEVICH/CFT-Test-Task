@@ -8,38 +8,33 @@
 import Foundation
 import CFT_Test_Task
 
-final class RegistrationStoreMock: RegistrationServiceFullProtocol {
+final class RegistrationStoreMock: RegistrationStoreProtocol {
     let name = "Alex"
     let surname = "Bekrenev"
     let birthdate = Date()
+    var user: User?
     
-    var isThereAUserInStore: Bool
-    
-    var userCredentials: String? {
-        return name + " " + surname
-    }
-    
-    func register(name: String, surname: String) {}
-    
-    func register(birthdate: Date) {}
-    
-    func confirmRegistration(with password: String) {}
+    var password = ""
     
     func removeAll() {}
     
-    func store(password: String, for user: User) {}
+    func store(password: String, for user: User) {
+        self.password = password
+    }
     
     func getPassword(for user: User) -> String? {
-        "123456789"
+        password
     }
     
-    func store(user: User) {}
+    func store(user: User) {
+        self.user = user
+    }
     
     func getUser() -> User? {
-        User(name: name, surname: surname, birthdate: birthdate)
+        return self.user
     }
     
-    init(isThereAUserInStore: Bool) {
-        self.isThereAUserInStore = isThereAUserInStore
+    init() {
+        self.user = User(name: name, surname: surname, birthdate: birthdate)
     }
 }

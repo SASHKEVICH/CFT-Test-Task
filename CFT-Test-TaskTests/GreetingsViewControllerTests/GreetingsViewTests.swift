@@ -23,8 +23,9 @@ final class GreetingsViewTests: XCTestCase {
     
     func testViewControllerGetsRightUserCredentials() {
         let viewController = GreetingsViewControllerSpy()
-        let registrationStoreMock = RegistrationStoreMock(isThereAUserInStore: true)
-        let presenter = GreetingsViewPresenter(registrationService: registrationStoreMock)
+        let registrationStoreMock = RegistrationStoreMock()
+        let presenter = GreetingsViewPresenter(
+            registrationService: RegistrationService(registrationStore: registrationStoreMock))
 
         viewController.presenter = presenter
         presenter.view = viewController
